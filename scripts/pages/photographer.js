@@ -12,9 +12,10 @@ class App {
         photographers
             .map(photographer => new Photograph(photographer) )
             .forEach(photographer => {
-                console.log(photographer)
-                const Template = new  PhotographTemplate(photographer)
-                this.photographHeader.appendChild(Template.createTemplatePhotograph())
+                if(photographer.id == id) {
+                    const Template = new  PhotographTemplate(photographer)
+                    this.photographHeader.appendChild(Template.createTemplatePhotograph())
+                }
             });
     }
 }
