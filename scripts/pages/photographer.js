@@ -1,5 +1,6 @@
 /* Je récupére l'ID du photograph */
 const id = window.location.search.split('id=')[1];
+console.log(id)
 class App {
     constructor() {
         this.photographHeader = document.querySelector('.photograph-header')
@@ -19,5 +20,29 @@ class App {
     }
 }
 
-const app = new App()
+class AppMedia {
+    constructor() {
+        this.photographMedias = document.querySelector('.photograph-medias')
+        this.mediasApi = new MediaApi('/data/photographers.json')
+    }
+
+    async media() {
+        const medias = await this.mediasApi.getMedia()
+        medias
+            .map(media => new Media(media) )
+            .forEach(media => {
+                console.log(media)
+                console.log('Ci-dessus avant if')
+                if(media._photographerId == id) {
+                    console.log(media)
+                    const Template = new MediaTemplate(media)
+                    this.photographMedias.appendChild(Template.createTemplateMedia())
+                }
+            });
+    }
+}
+
+let app = new App()
+const appMedia = new AppMedia()
 app.photograph()
+appMedia.media()

@@ -1,3 +1,4 @@
+@import url(style.css);
 #contact_modal {
     display: none;
 }
@@ -26,6 +27,11 @@
     display: flex;
 }
 
+.d--inline-block {
+    display: inline-block;
+    margin-right: 8px;
+}
+
 .justify-content--space-between {
     justify-content: space-between;
 }
@@ -49,6 +55,19 @@
     border-radius: 100%;
 }
 
+.photographer-media__picture {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+/*** Ly ***/
+.ly--container-lg {
+    padding: 36px 98px;
+}
+
+
 /*** Font-size ***/
 .title--xxl {
     font-size: 4em;
@@ -56,6 +75,10 @@
 
 .title--md {
     font-size: 1.33em;
+}
+
+.mb-lg {
+    margin-bottom: 32px;
 }
 
 .contact_button {
@@ -82,7 +105,9 @@
     padding: 35px;
     margin: auto;
     z-index: 1;
-    position: relative;
+    position: absolute;
+    top: 50%;
+    right: 25%;
 }
 
 .modal header {
