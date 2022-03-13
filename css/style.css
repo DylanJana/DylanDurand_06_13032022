@@ -40,7 +40,6 @@ h1 {
 }
 
 .photographer_section article h2 {
-    color: #D3573C;
     font-size: 36px;
 }
 
@@ -77,6 +76,10 @@ h1 {
 /*** Themes ***/
 .color-primary {
     color: #901C1C;
+}
+
+.color-secondary {
+    color: #D3573C;
 }
 
 .color-tiers {
