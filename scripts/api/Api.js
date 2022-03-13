@@ -24,7 +24,7 @@ class PhotographersApi extends Api {
         super(url)
     }
 
-    async getMovies() {
+    async getPhotographers() {
         return await this.get()
     }
 }

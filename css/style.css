@@ -3,6 +3,7 @@
 body {
     font-family: "DM Sans", sans-serif;
     margin: 0;
+    font-size: 18px;
 }
 
 
@@ -15,7 +16,6 @@ header {
 }
 
 h1 {
-    color: #901C1C;
     margin-right: 100px;
 }
 
@@ -47,4 +47,51 @@ h1 {
 .photographer_section article img {
     height: 200px;
     width: 200px;
+    object-fit: cover;
+}
+
+.photographer_section article a {
+    text-align: center;
+    text-decoration: none;
+}
+
+.border-radius--100 {
+    border-radius: 100%;
+}
+
+/* Margins 0 for paragraph and title */
+.margin--0 {
+    margin: 0;
+}
+
+.mbt-md {
+    margin-bottom: 16px;
+    margin-top: 16px;
+}
+
+.mbt-sm {
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+
+/*** Themes ***/
+.color-primary {
+    color: #901C1C;
+}
+
+.color-tiers {
+    color: rgba(117, 117, 117, 1);
+}
+
+/*** Txt ***/
+.title--xl {
+    font-size: 2em;
+}
+
+.title--sm {
+    font-size: .77em;
+}
+
+.title--xs {
+    font-size: .56em;
 }

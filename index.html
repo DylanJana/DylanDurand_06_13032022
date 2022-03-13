@@ -9,12 +9,17 @@
   </head>
   <body>
     <header>
-        <img src="assets/images/logo.png" class="logo" />
-        <h1>Nos photographes</h1>
+      <a href="index.html" role="link">
+        <img src="assets/images/logo.png" class="logo" role="image-link"/>
+      </a>
+        <h1 class="color-primary" role="heading">Nos photographes</h1>
     </header>
     <main id="main">
-        <div class="photographer_section"></div>
+        <div class="photographer_section">
+        </div>
     </main>
+    <!--Constructor Pattern-->
+    <script src="/scripts/models/photograph.js"></script>
     <!-- Template regroupant les informations du profil du photographe "Page Accueil"-->
     <script src="/scripts/templates/profil.js"></script>
     <!-- Mise en place d'une API pour gérer les requêtes HTTP et récupérer les données de mon JSON-->
