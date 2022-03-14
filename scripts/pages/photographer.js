@@ -31,8 +31,6 @@ class AppMedia {
         medias
             .map(media => new Media(media) )
             .forEach(media => {
-                console.log(media)
-                console.log('Ci-dessus avant if')
                 if(media._photographerId == id) {
                     console.log(media)
                     const Template = new MediaTemplate(media)

@@ -82,6 +82,9 @@ h1 {
     color: #D3573C;
 }
 
+video {
+    object-fit: cover;
+}
 .color-tiers {
     color: rgba(117, 117, 117, 1);
 }

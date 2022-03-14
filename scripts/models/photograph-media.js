@@ -4,7 +4,8 @@ class Media {
         this._photographerId = media.photographerId
         this._title =  media.title
         this._image =  media.image
-        this.__video = media.video
+        this._video = media.video
+        this._poster = media.poster
         this._likes =  media.likes
         this._date =  media.date
         this._price = media.price
@@ -27,7 +28,11 @@ class Media {
     }
 
     get video() {
-        return `/assets/images/${this._name}/${this.__video}`
+        return `/assets/images/${this._video}`
+    }
+
+    get poster() {
+        return `/assets/images/${this._poster}`
     }
 
     get likes() {
