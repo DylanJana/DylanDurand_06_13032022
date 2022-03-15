@@ -62,11 +62,29 @@
     border-radius: 5px;
 }
 
+.photograph-medias__counter {
+    position: fixed;
+    z-index: 999;
+    bottom: 0;
+    right: 0;
+}
+
+
+.photograph-medias__counter p {
+    font-weight: bold;
+    margin: 0 8px;
+}
+
 /*** Ly ***/
 .ly--container-lg {
     padding: 36px 98px;
 }
 
+.ly--container-sm {
+    width: 375px;
+    padding: 16px;
+    background-color: #DB8876;
+}
 
 /*** Font-size ***/
 .title--xxl {

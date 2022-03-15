@@ -82,6 +82,10 @@ h1 {
     color: #D3573C;
 }
 
+.black {
+    color: #000
+}
+
 video {
     object-fit: cover;
 }

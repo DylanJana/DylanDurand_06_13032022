@@ -54,6 +54,7 @@ class MediaTemplate {
         </div>
         `
         }
+
         mediaContainer.innerHTML = mediaPhotograph
         return mediaContainer
     }

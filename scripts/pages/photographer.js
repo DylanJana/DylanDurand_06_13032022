@@ -15,6 +15,7 @@ class App {
                 if(photographer.id == id) {
                     const Template = new  PhotographTemplate(photographer)
                     this.photographHeader.appendChild(Template.createTemplatePhotograph())
+                    document.body.appendChild(Template.createCounterLikes())
                 }
             });
     }
@@ -22,7 +23,7 @@ class App {
 
 class AppMedia {
     constructor() {
-        this.photographMedias = document.querySelector('.photograph-medias')
+        this.photographMedias = document.querySelector('.photograph-medias') 
         this.mediasApi = new MediaApi('/data/photographers.json')
     }
 

@@ -42,4 +42,8 @@ class Media {
     get price() {
         return this._price;
     }
+
+    get photographerPrice() {
+        return this._photographerPrice
+    }
 }
