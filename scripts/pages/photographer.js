@@ -1,7 +1,6 @@
 /* Je récupére l'ID du photograph */
 const id = window.location.search.split('id=')[1];
 let totalLikes = parseInt(0)
-console.log(id)
 
 class App {
     constructor() {
@@ -19,7 +18,6 @@ class App {
                     this.photographHeader.appendChild(Template.createTemplatePhotograph())
                     let photographPrice = photographer.price
                     document.querySelector('.photograph-medias__counter div p#price-photograph').innerHTML = photographPrice + ' € / jour'
-                    console.log(photographPrice)
                 }
             });
     }
