@@ -1,6 +1,8 @@
 /* Je récupére l'ID du photograph */
 const id = window.location.search.split('id=')[1];
+let totalLikes = parseInt(0)
 console.log(id)
+
 class App {
     constructor() {
         this.photographHeader = document.querySelector('.photograph-header')
@@ -15,7 +17,9 @@ class App {
                 if(photographer.id == id) {
                     const Template = new  PhotographTemplate(photographer)
                     this.photographHeader.appendChild(Template.createTemplatePhotograph())
-                    document.body.appendChild(Template.createCounterLikes())
+                    let photographPrice = photographer.price
+                    document.querySelector('.photograph-medias__counter div p#price-photograph').innerHTML = photographPrice + ' € / jour'
+                    console.log(photographPrice)
                 }
             });
     }
@@ -33,15 +37,18 @@ class AppMedia {
             .map(media => new Media(media) )
             .forEach(media => {
                 if(media._photographerId == id) {
-                    console.log(media)
                     const Template = new MediaTemplate(media)
                     this.photographMedias.appendChild(Template.createTemplateMedia())
+                    totalLikes +=  media.likes
+                    document.querySelector('.photograph-medias__counter p#total-likes').innerHTML = totalLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>'
                 }
             });
     }
 }
 
 let app = new App()
-const appMedia = new AppMedia()
 app.photograph()
+
+const appMedia = new AppMedia()
 appMedia.media()
+

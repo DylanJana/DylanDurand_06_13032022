@@ -29,19 +29,4 @@ class PhotographTemplate {
         photographHeaderContainer.innerHTML = templatePhotograph;
         return photographHeaderContainer
     }
-
-    createCounterLikes() {
-        const mediaCounter = document.querySelector('.photograph-medias__counter')
-        // Bloc orange regroupant le nombre total de like et le prix du photographe
-        let mediaPhotographCounter = `
-        <div>
-            <p>Nbre coeur <i class="fas fa-heart black" aria-label="likes"></i></p>
-        </div>
-        <div>
-            <p>${this.photographer.price}€ / jour</p>
-        </div>
-        `
-        mediaCounter.innerHTML = mediaPhotographCounter
-        return mediaCounter
-    }
 }
