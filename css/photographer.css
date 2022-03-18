@@ -109,6 +109,24 @@
     margin: 0 8px;
 }
 
+/*** Contact Form ***/
+textarea {
+    resize: none;
+    width: 100%;
+}
+
+#contact {
+    font-size: 3.55em;
+}
+
+form div input {
+    border-radius: 10px;
+}
+
+form div textarea {
+    border-radius: 10px;
+}
+
 /*** Ly ***/
 .ly--container-lg {
     padding: 36px 98px;

@@ -26,18 +26,33 @@
         </div>
       </section>
     </main>
-    <div id="contact_modal">
-			<div class="modal">
-				<header>
-          <h2>Contactez-moi</h2>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+    <section id="contact_modal" alt="">
+			<div class="modal" role="dialog" aria-labelledby="contact">
+				<header role="header">
+          <h1 id="contact" role="heading">Contactez-moi<span id="photograph-name"></span></h1>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact Form" />
         </header>
-				<form>
-					<div>
-						<label>Prénom</label>
-						<input />
-					</div>
-          <button class="contact_button">Envoyer</button>
+				<form id="contact-form" action="" method="POST">
+          <div>
+						<label id="firstname">Prénom</label>
+						<input type="text" id="firstname" alt="First Name" aria-labelledby="firstname contact-form" />
+          </div>
+          <div>
+            <label id="lastname">Nom</label>
+						<input type="text" id="lastname"  alt="Last Name" aria-labelledby="lastname contact-form" />
+          </div>
+          <div>
+            <label id="email">Email</label>
+						<input type="email" id="email" alt="Email" aria-labelledby="email contact-form" />
+          </div>
+          <div>
+            <label id="message">Votre message</label>
+            <textarea id="message" name="message" rows="10" alt="Your Message" aria-labelledby="message contact-form">
+            </textarea>
+          </div>
+          <div>
+            <button class="contact_button" type="submit" alt="send">Envoyer</button>
+          </div>
 				</form>
 			</div>
 		</div>
