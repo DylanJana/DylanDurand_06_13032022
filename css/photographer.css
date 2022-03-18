@@ -1,4 +1,17 @@
 @import url(style.css);
+@keyframes scale {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.25);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
 #contact_modal {
     display: none;
 }
@@ -63,9 +76,24 @@
     color: #901C1C;
 }
 
-.photograph-medias article section div p {
-    color: #901C1C;
+.photograph-medias article section div a i {
+    color: #000;
     font-weight: 700;
+}
+
+.photograph-medias article section div p {
+    font-weight: 700;
+}
+
+.photograph-medias article section div p.one {
+    color: #901C1C;
+    transition: 1s;
+}
+
+.photograph-medias article section div p.one + a i {
+    color: #901C1C;
+    transition: 1s;
+    animation: scale 1.5s;
 }
 
 .photograph-medias__counter {

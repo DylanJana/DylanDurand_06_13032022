@@ -1,8 +1,8 @@
 class MediaTemplate {
-    constructor(media) {
-        this.media = media;
+    constructor(media, LovelistSubject) {
+        this.media = media
+        this.LovelistSubject = LovelistSubject
     }
-
 
     createTemplateMedia() {
         const mediaContainer = document.createElement('article');
@@ -11,7 +11,7 @@ class MediaTemplate {
         `
         <!-- Je crée mon template pour un media-->
         <div>
-            <a href="#" role="link">
+            <a href="javascript:void(0);" role="link">
                 <img src="${this.media.image}"
                 alt="${this.media.title}" 
                 role="image-link"
@@ -24,7 +24,7 @@ class MediaTemplate {
             </div>
             <div class="column d-flex align-items--center">
                 <p class="d--inline-block">${this.media.likes}</p>
-                <a href="javascript:void(0);" role="link"><i class="fas fa-heart color-primary" aria-label="likes"></i></a>
+                <a href="javascript:void(0);" role="link" class="love-btn"><i class="fas fa-heart" aria-label="likes"></i></a>
             </div>
         </div>
         `
@@ -48,8 +48,8 @@ class MediaTemplate {
                 <p class="title--md color-primary">${this.media.title}</p>
             </div>
             <div class="column d-flex align-items--center">
-                <p class="d--inline-block">${this.media.likes}</p>
-                <a href="javascript:void(0);" role="link"><i class="fas fa-heart color-primary" aria-label="likes"></i></a>
+                <p class="d--inline-block"><span class="love-count">${this.media.likes}</span></p>
+                <a href="javascript:void(0);" class="love-btn" role="link"><i class="fas fa-heart color-primary" aria-label="likes"></i></a>
             </div>
         </div>
         `

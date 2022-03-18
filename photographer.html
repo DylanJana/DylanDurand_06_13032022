@@ -19,7 +19,7 @@
       <section class="photograph-medias d-flex align-items--center flex-wrap ly--container-lg justify-content--space-between"></section>
       <section class="photograph-medias__counter d-flex align-items--center flex-wrap ly--container-sm justify-content--space-between">
         <div>
-          <p id="total-likes"></p>
+          <p id="total-likes"><span class="love-count"></span></p>
         </div>
         <div>
           <p id="price-photograph"></p>
@@ -47,10 +47,14 @@
      <script src="/scripts/models/photograph-media.js"></script>
     <!-- Api -->
     <script src="/scripts/api/Api.js"></script>
+
+    <!-- Templates regroupant les informations du profil du photographe-->
+    <script src="/scripts/templates/page-photograph.js"></script>
+    <script src="/scripts/templates/media-template.js"></script>
+
     <script src="scripts/pages/photographer.js"></script>
-     <!-- Templates regroupant les informations du profil du photographe-->
-     <script src="/scripts/templates/page-photograph.js"></script>
-     <script src="/scripts/templates/media-template.js"></script>
+
+     <!--Form-->
      <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
