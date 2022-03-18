@@ -6,6 +6,7 @@ class PhotographTemplate {
 
     createTemplatePhotograph() {
         const photographHeaderContainer = document.createElement('article');
+        let photographName = document.querySelector('#photograph-name')
         photographHeaderContainer.classList.add('photographer-header__content','row-has--columns', 'd-flex', 'justify-content--space-between', 'align-items--center', 'w-100')
         photographHeaderContainer.setAttribute('aria-label', 'Photograph Profil');
         const templatePhotograph = `
@@ -27,6 +28,8 @@ class PhotographTemplate {
         `
 
         photographHeaderContainer.innerHTML = templatePhotograph;
+        photographName.innerHTML = this.photographer.name
+
         return photographHeaderContainer
     }
 }

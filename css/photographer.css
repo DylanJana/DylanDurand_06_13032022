@@ -117,6 +117,7 @@ textarea {
 
 #contact {
     font-size: 3.55em;
+    margin: 0;
 }
 
 form div input {
@@ -184,16 +185,27 @@ form div textarea {
 .modal header {
     justify-content: space-between;
     width: 100%;
+    height: auto;
+    align-items: start;
+}
+
+.modal header div {
+    margin-bottom: 32px;
 }
 
 .modal header img {
     cursor: pointer;
+    margin-top: 16px;
 }
 
 .modal header h2 {
     font-size: 64px;
     font-weight: normal;
-    text-align: center;
+}
+
+.modal header h2 span {
+    font-size: 64px;
+    display: block;
 }
 
 form {
@@ -221,4 +233,21 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+
+.error-message {
+    display: none;
+    color: #312E2E;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+form input:focus {
+    border: 2px solid #312E2E;
+    outline: 0;
+}
+
+form textarea:focus {
+    border: 2px solid #312E2E;
+    outline: 0;
 }

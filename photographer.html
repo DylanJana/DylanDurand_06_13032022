@@ -29,26 +29,31 @@
     <section id="contact_modal" alt="">
 			<div class="modal" role="dialog" aria-labelledby="contact">
 				<header role="header">
-          <h1 id="contact" role="heading">Contactez-moi<span id="photograph-name"></span></h1>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact Form" />
+          <div>
+            <h2 id="contact" role="heading">Contactez-moi<span id="photograph-name"></span></h2>
+          </div>
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact Form" class="close" />
         </header>
-				<form id="contact-form" action="" method="POST">
+				<form name="contact" id="contact-form" action="" method="POST" onsubmit="validate();">
           <div>
-						<label id="firstname">Prénom</label>
+						<label for="firstname">Prénom</label>
 						<input type="text" id="firstname" alt="First Name" aria-labelledby="firstname contact-form" />
+            <span class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du prénom</span>
           </div>
           <div>
-            <label id="lastname">Nom</label>
+            <label for="lastname">Nom</label>
 						<input type="text" id="lastname"  alt="Last Name" aria-labelledby="lastname contact-form" />
+            <span class="error-message">Veuillez entrer 2 caractères ou plus pour le champ du prénom</span>
           </div>
           <div>
-            <label id="email">Email</label>
+            <label for="email">Email</label>
 						<input type="email" id="email" alt="Email" aria-labelledby="email contact-form" />
+            <span class="error-message">Merci d'entrer un email valide</span>
           </div>
           <div>
-            <label id="message">Votre message</label>
-            <textarea id="message" name="message" rows="10" alt="Your Message" aria-labelledby="message contact-form">
-            </textarea>
+            <label for="message">Votre message</label>
+            <textarea id="message" name="message" rows="10" alt="Your Message" aria-labelledby="message contact-form"></textarea>
+            <span class="error-message">Laissez nous au moins quelques mots</span>
           </div>
           <div>
             <button class="contact_button" type="submit" alt="send">Envoyer</button>

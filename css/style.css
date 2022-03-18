@@ -105,3 +105,7 @@ video {
 .title--xs {
     font-size: .56em;
 }
+
+.text--center {
+    text-align: center;
+}
