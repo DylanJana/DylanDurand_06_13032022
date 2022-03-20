@@ -16,7 +16,19 @@
     <main id="main" role="main">
       <section class="photograph-header d-flex align-items--center flex-wrap">
       </section>
+      <!-- Filtre pour trier les médias par popularité et par titre-->
+      <section class="ly--container-lg">
+        <form name="filtre" id ="filtre-form" action="" methode="POST" class="flex flex--row align-items--center">
+          <label for="tri">Trier par : </label>
+          <select name="filtre-select" id="tri" aria-labelledby="Tri des medias">
+            <option value="">-- Choix du tri --</option>
+            <option value="popular" aria-labelledby="Tri par popularité">Popularité</option>
+            <option value="titre" aria-labelledby="Tri par titre">Titre</option>
+          </select>
+        </form>
+      </section>
       <section class="photograph-medias d-flex align-items--center flex-wrap ly--container-lg justify-content--space-between"></section>
+      <!-- Compteur de likes total-->
       <section class="photograph-medias__counter d-flex align-items--center flex-wrap ly--container-sm justify-content--space-between">
         <div>
           <p id="total-likes"><span class="love-count"></span></p>
@@ -26,6 +38,7 @@
         </div>
       </section>
     </main>
+    <!-- Formulaire de contact modal Photographe-->
     <section id="contact_modal" alt="">
 			<div class="modal" role="dialog" aria-labelledby="contact">
 				<header role="header">
