@@ -1,7 +1,6 @@
 class MediaTemplate {
-    constructor(media, LovelistSubject) {
+    constructor(media) {
         this.media = media
-        this.LovelistSubject = LovelistSubject
     }
 
     createTemplateMedia() {
@@ -12,7 +11,7 @@ class MediaTemplate {
         <!-- Je crée mon template pour un media-->
         <div>
             <a href="javascript:void(0);" role="link">
-                <img src="${this.media.image}"
+                <img src="/assets/images/${this.media.image}"
                 alt="${this.media.title}" 
                 role="image-link"
                 class="photographer-media__picture" />
@@ -38,7 +37,7 @@ class MediaTemplate {
             width="450px"
             height="450px"
             poster="${this.media.poster}">
-                <source src="${this.media.video}"
+                <source src="/assets/images/${this.media.video}"
                         type="video/mp4"">
             </video>
             </a>

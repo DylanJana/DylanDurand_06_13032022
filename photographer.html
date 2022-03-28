@@ -21,10 +21,11 @@
         <form name="filtre" id ="filtre-form" action="" methode="POST" class="flex flex--row align-items--center">
           <label for="tri">Trier par : </label>
           <select name="filtre-select" id="tri" aria-labelledby="Tri des medias">
-            <option value="">-- Choix du tri --</option>
+            <option value="default">-- Choix du tri --</option>
             <option value="popular" aria-labelledby="Tri par popularité">Popularité</option>
-            <option value="titre" aria-labelledby="Tri par titre">Titre</option>
+            <option value="title" aria-labelledby="Tri par titre">Titre</option>
           </select>
+          <p id="demo"></p>
         </form>
       </section>
       <section class="photograph-medias d-flex align-items--center flex-wrap ly--container-lg justify-content--space-between"></section>
@@ -85,7 +86,9 @@
     <script src="/scripts/templates/page-photograph.js"></script>
     <script src="/scripts/templates/media-template.js"></script>
 
-    <script src="scripts/pages/photographer.js"></script>
+    <!-- Search.js-->
+    <script type="module" src="/scripts/search/search.js"></script>
+    <script type="module" src="scripts/pages/photographer.js"></script>
 
      <!--Form-->
      <script src="/scripts/utils/contactForm.js"></script>

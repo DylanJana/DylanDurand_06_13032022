@@ -1,42 +1,42 @@
-class Media {
+class Media  {
     constructor(media) {
         this._id = media.id
-        this._photographerId = media.photographerId
-        this._title =  media.title
-        this._image =  media.image
-        this._video = media.video
-        this._poster = media.poster
-        this._likes =  media.likes
-        this._date =  media.date
-        this._price = media.price
+        this.photographerId = media.photographerId
+        this.title =  media.title
+        this.image =  media.image
+        this.video = media.video
+        this.poster = media.poster
+        this.likes =  media.likes
+        this.date =  media.date
+        this.price = media.price
     }
 
-    get id() {
+    /*get id() {
         return this._id
     }
 
     get photographer() {
-        return this._photographerId
+        return this.photographerId
     }
 
-    get title() {
-        return this._title
+    /*get title() {
+        return this.title
     }
 
     get image() {
-        return `/assets/images/${this._image}`
+        return `/assets/images/${this.image}`
     }
 
     get video() {
-        return `/assets/images/${this._video}`
+        return `/assets/images/${this.video}`
     }
 
     get poster() {
-        return `/assets/images/${this._poster}`
+        return `/assets/images/${this.poster}`
     }
 
     get likes() {
-        return this._likes
+        return this.likes
     }
 
     get price() {
@@ -45,5 +45,5 @@ class Media {
 
     get photographerPrice() {
         return this._photographerPrice
-    }
+    }*/
 }
