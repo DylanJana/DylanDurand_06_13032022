@@ -4,18 +4,18 @@ class Api {
      * @param {string} url
      */
     constructor(url) {
-        this._url = url
+        this.url = url
     }
 
     async get () {
-        return fetch(this._url)
+        return fetch(this.url)
             .then(res => res.json())
             .then(res => res.photographers)
             .catch(err => console.log('erreur rencontrée', err))
     }
 
     async getMedias () {
-        return fetch(this._url)
+        return fetch(this.url)
             .then(res => res.json())
             .then(res => res.media)
             .catch(err => console.log('erreur rencontrée', err))

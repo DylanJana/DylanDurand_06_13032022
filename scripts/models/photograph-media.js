@@ -1,6 +1,6 @@
 class Media  {
     constructor(media) {
-        this._id = media.id
+        this.id = media.id
         this.photographerId = media.photographerId
         this.title =  media.title
         this.image =  media.image

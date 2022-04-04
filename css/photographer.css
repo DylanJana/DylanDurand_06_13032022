@@ -279,3 +279,52 @@ label[for="tri"] {
 select#tri option:first-child {
     color: rgba(255, 255, 255, 0.5);
 }
+
+/*** LightBox ***/
+#galerie {
+    display: block;
+    width: 1253px;
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    right: 20%;
+    margin: auto;
+    z-index: 4;
+}
+
+.modal-galerie {
+    padding: 32px;
+    position: relative;
+}
+.modal-galerie header {
+    position: relative;
+    align-items: baseline;
+    justify-content: end;
+}
+
+.modal-galerie__cross a {
+    position: absolute;
+    right: 0;
+}
+
+.modal-galerie__cross i {
+    display: inline-block;
+    text-align: center;
+    width: 42px;
+    height: 42px;
+    font-size: 42px;
+    color: #901C1C;
+}
+
+#galerie .arrows__container a {
+    font-size: 42px;
+    color: #901C1C;
+}
+
+.modal-galerie {
+    text-align: center;
+}
+
+.modal-galerie__image img {
+    width: 50%;
+}

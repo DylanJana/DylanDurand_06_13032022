@@ -3,13 +3,12 @@ class PhotographTemplate {
         this.photographer = photographer;
     }
 
-
     createTemplatePhotograph() {
+        
         const photographHeaderContainer = document.createElement('article');
-        let photographName = document.querySelector('#photograph-name')
         photographHeaderContainer.classList.add('photographer-header__content','row-has--columns', 'd-flex', 'justify-content--space-between', 'align-items--center', 'w-100')
         photographHeaderContainer.setAttribute('aria-label', 'Photograph Profil');
-        const templatePhotograph = `
+        let templatePhotograph = `
         <!-- Je crée une div afin de faire de la mise en page avec flexbox-->
         <div class="column">
             <h1 class="photograph-header__title color-secondary title--xxl w-100" role="heading">${this.photographer.name}</h1>
@@ -21,15 +20,12 @@ class PhotographTemplate {
         </div>
         <div class="column">
         <img class="img--rounded"
-        src="${this.photographer.portrait}" 
+        src="/assets/photographers/${this.photographer.portrait}" 
         alt="${this.photographer.name}"
         />
         </div>
         `
-
-        photographHeaderContainer.innerHTML = templatePhotograph;
-        photographName.innerHTML = this.photographer.name
-
+        photographHeaderContainer.innerHTML = templatePhotograph
         return photographHeaderContainer
     }
 }

@@ -1,7 +1,5 @@
 /* Je récupére l'ID du photograph */
 export const id = window.location.search.split('id=')[1];
-let totalLikes = parseInt(0)
-let mediaLove = parseInt(0)
 export let favoritesMedias = []
 
 
@@ -14,7 +12,7 @@ class App {
     async photograph() {
         const photographers = await this.photographersApi.getPhotographers()
         photographers
-            .map(photographer => new Photograph(photographer) )
+            .map(photographer => new Photograph(photographer))
             .forEach(photographer => {
                 if(photographer.id == id) {
                     const Template = new  PhotographTemplate(photographer)
@@ -31,57 +29,53 @@ class AppMedia {
         this.photographMedias = document.querySelector('.photograph-medias') 
         this.mediasApi = new MediaApi('/data/photographers.json')
         this.countLikes = document.querySelector('.photograph-medias__counter p#total-likes span.love-count')
-        this.mediasLoves = document.querySelector('p.d--inline-block')
     }
 
-    async media() {
-        console.log('test')
-        const medias = await this.mediasApi.getMedia();
-
-        let favoritesButtons = document.getElementsByClassName('love-btn')
-        let picturesLoves = document.getElementsByClassName('d--inline-block')
-        let result = this.countLikes
-        for (let i = 0; i < favoritesButtons.length; i++) {
-            let favoriteButton = favoritesButtons[i]
-            let favoriteMedia = favoritesMedias[i]
-            let pictureLove = picturesLoves[i]
-            favoriteButton.addEventListener('click', function() {
-                if(pictureLove.classList.contains('one')) {
-                    pictureLove.classList.remove('one')
-                    favoriteMedia--
-                    totalLikes--
-                    pictureLove.innerHTML = favoriteMedia
-                } else {
-                    pictureLove.classList.add('one')
-                    picturesLoves = document.querySelector('.d--inline-block.one')
-                    favoriteMedia++
-                    totalLikes++
-                    pictureLove.innerHTML = favoriteMedia
+    async favoriteMedia(arr) {
+        let sumLikes = 0;
+        arr
+            .map(media => new Media(media))
+            .forEach(media => {
+                if(media.photographerId == id) {
+                    sumLikes += media.likes;
+                    console.log("number like", media.likes)
                 }
-                result.innerHTML = totalLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>'
             })
-        }
-        
-        //this.displayMedias(medias) ;
-        
+
+            let articlesMedias = document.querySelectorAll('.photograph-medias article');
+            let newCountLikes = document.querySelector('.photograph-medias__counter p#total-likes span.love-count')
+    
+            for (let i = 0; i < articlesMedias.length; i++) {
+                let articleMedia = articlesMedias[i];
+                let loveBtn = articleMedia.querySelector('.love-btn')
+                loveBtn.addEventListener('click', function() {
+                    let likeThisMedia = articleMedia.querySelector('.d--inline-block');
+                    if(likeThisMedia.classList.contains('one')) {
+                        likeThisMedia.classList.remove('one')
+                        let likeThisMediaValue = parseInt(likeThisMedia.innerHTML) - 1;
+                        likeThisMedia.innerHTML = likeThisMediaValue;
+                        sumLikes--
+                        newCountLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>';
+                    } else {
+                        likeThisMedia.classList.add('one')
+                        likeThisMedia = articleMedia.querySelector('.d--inline-block.one');
+                        let likeThisMediaValue = parseInt(likeThisMedia.innerHTML) + 1;
+                        likeThisMedia.innerHTML = likeThisMediaValue;
+                        sumLikes++
+                        newCountLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>';
+                    }
+                })
+            }
+
+            this.countLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>'
     }
     async displayMedias(medias) {
-        console.log('medias-------',medias)
-        this.photographHeader = document.querySelector('.photograph-header')
-        this.photographHeader.innerHTML= '';
         medias
         .map(media => new Media(media) )
         .forEach(media => {
-            console.log('media._photographerId',media.photographerId) ;
-            console.log("idddd",id) ;
             if(media.photographerId == id) {
-                console.log('inif----')
                 const Template = new MediaTemplate(media)
                 this.photographMedias.appendChild(Template.createTemplateMedia())
-                totalLikes +=  media.likes
-                this.countLikes.innerHTML = totalLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>'
-                mediaLove = media.likes
-                const addMedia = favoritesMedias.push(mediaLove)
             }
         });
     }
@@ -91,4 +85,3 @@ let app = new App()
 app.photograph()
 
 export const appMedia = new AppMedia()
-appMedia.media()

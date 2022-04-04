@@ -27,7 +27,7 @@ class MediaTemplate {
             </div>
         </div>
         `
-        if (this.media._video !== undefined) {
+        if (this.media.video !== undefined) {
             mediaPhotograph =
         `
         <!-- Je crée mon template pour un media-->
@@ -47,7 +47,7 @@ class MediaTemplate {
                 <p class="title--md color-primary">${this.media.title}</p>
             </div>
             <div class="column d-flex align-items--center">
-                <p class="d--inline-block"><span class="love-count">${this.media.likes}</span></p>
+                <p class="d--inline-block">${this.media.likes}</p>
                 <a href="javascript:void(0);" class="love-btn" role="link"><i class="fas fa-heart color-primary" aria-label="likes"></i></a>
             </div>
         </div>
