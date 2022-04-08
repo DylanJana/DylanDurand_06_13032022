@@ -80,20 +80,21 @@
       <div class="modal-galerie" role="dialog" aria-label="image closeup view">
         <header role="header">
          <a href="#" class="modal-galerie__cross">
-          <i class="fas fa-times" aria-hidden="true" alt="Close dialog" role="button" onclick="closeModal()"></i>
+          <i class="fas fa-times" aria-hidden="true" alt="Close dialog" role="button" onclick="closeModal()" class="close-lightbox-icon"></i>
         </a>
         </header>
         <div class="arrows__container">
-          <a href="#">
+          <a href="#" class="left-arrow-lightbox">
             <i class="fas fa-angle-left" role="button" alt="Previous image"></i>
           </a>
-          <a href="#">
+          <a href="#"  class="right-arrow-lightbox>
             <i class="fas fa-angle-right" alt="Next image"></i>
           </a>
         </div>
         <div class="modal-galerie__image">
-          <img src="/assets/images/Animals_Rainbow.jpg" alt="Titre de l'image">
+          <img src="/assets/images/Animals_Rainbow.jpg" alt="Titre de l'image" id="lightbox__media">
         </div>
+        <p id="lightbox__name">Arc-en-ciel</p>
       </div>
     </section>
     <script src="https://kit.fontawesome.com/cc81d91d9d.js" crossorigin="anonymous"></script>
@@ -110,6 +111,9 @@
     <!-- Search.js-->
     <script type="module" src="/scripts/search/search.js"></script>
     <script type="module" src="scripts/pages/photographer.js"></script>
+
+    <!--LightBox.js-->
+    <script src="/scripts/Lightbox/lightbox.js"></script>
 
      <!--Form-->
      <script src="/scripts/utils/contactForm.js"></script>

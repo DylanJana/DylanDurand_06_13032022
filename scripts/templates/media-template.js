@@ -9,7 +9,7 @@ class MediaTemplate {
         let mediaPhotograph =
         `
         <!-- Je crée mon template pour un media-->
-        <div>
+        <div class="photographer__media">
             <a href="javascript:void(0);" role="link">
                 <img src="/assets/images/${this.media.image}"
                 alt="${this.media.title}" 
