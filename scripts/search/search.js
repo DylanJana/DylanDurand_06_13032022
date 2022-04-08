@@ -47,7 +47,6 @@ class TriMedia {
 let triAllMedias = new TriMedia();
 
 let selectValue = "default"
-console.log('selectValue 1 ', selectValue)
 document.getElementById('tri').onchange = function() {valueSelect(selectValue)};
 function valueSelect() {
     const selectId = document.getElementById('tri');
@@ -56,15 +55,12 @@ function valueSelect() {
     if (index === 1) {
         mediasPhotographer.innerHTML = '';
         triAllMedias.triMediaByPopular();
-        console.log('Choix index 1');
     } else if (index === 2) {
         mediasPhotographer.innerHTML = '';
         triAllMedias.triMediaByTitle();
-        console.log('Choix index 2');
     } else  {
         mediasPhotographer.innerHTML = '';
         triAllMedias.init();
-        console.log('Choix index 0');
     }
 }
 

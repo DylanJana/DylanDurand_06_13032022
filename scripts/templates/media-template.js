@@ -1,4 +1,4 @@
-class MediaTemplate {
+export default class MediaTemplate {
     constructor(media) {
         this.media = media
     }
@@ -56,5 +56,33 @@ class MediaTemplate {
 
         mediaContainer.innerHTML = mediaPhotograph
         return mediaContainer
+    }
+
+    createTemplateLightBox() {
+        const containerLightBox = document.querySelector('#galerie')
+        let templateLightBox = `
+        <div class="modal-galerie" role="dialog" aria-label="image closeup view">
+            <header role="header">
+                <a href="javascript:void(0);" class="modal-galerie__cross">
+                <i class="fas fa-times" aria-hidden="true" alt="Close dialog" role="button" onclick="close()" class="close-lightbox-icon"></i>
+                </a>
+            </header>
+            <div class="arrows__container">
+                <a href="javascript:void(0);" class="left-arrow-lightbox">
+                    <i class="fas fa-angle-left" role="button" alt="Previous image"></i>
+                </a>
+                <a href="javascript:void(0);" class="right-arrow-lightbox">
+                    <i class="fas fa-angle-right" alt="Next image"></i>
+                </a>
+            </div>
+            <div class="modal-galerie__image">
+            <img src="/assets/images/${this.media.image}" alt="${this.media.title}" id="lightbox__media">
+            </div>
+            <p id="lightbox__name">${this.media.title}</p>
+      </div>
+        `
+
+        containerLightBox.innerHTML = templateLightBox;
+        return containerLightBox
     }
 }

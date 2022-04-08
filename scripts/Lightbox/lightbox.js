@@ -1,24 +1,38 @@
-export default class LightBox {
+import MediaTemplate from "../templates/media-template.js";
+class LightBox {
     constructor() {
         this.currentIndex = 0;
     }
 
     // initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
     init(currentMedia, currentMediaName) {
-        let getMedias = Array.from(document.getElementsByClassName('photographer__media'));
+        let getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media .photographer-media__picture'));
+        console.log("currentMedia ",currentMedia)
+        console.log("currentMediaName", currentMediaName)
         getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
-            let lightBoxMedia = document.getElementById('lightbox__media');
-            let lightBoxName = document.getElementById('lightbox__name');
-            let src = currentMedia[index];
-            let nameSrc = currentMediaName[index];
-            this.currentIndex = index;
-
+            console.log("getMedias", getMedias)
             document.getElementById('galerie').style.display = 'block';
+            let lightBoxMedia = document.querySelectorAll('.modal-galerie__image #lightbox__media');
+            console.log("lightBoxMedia brut", lightBoxMedia)
+            let lightBoxName = document.querySelectorAll('.modal-galerie #lightbox__name');
+            console.log("Name ", lightBoxName)
+            console.log("media works ", mediaWorks)
+            console.log("media index ", index);
+            this.currentIndex = index;
+            let src = currentMedia;
+            console.log("src ", src)
+            let nameSrc = currentMediaName;
+            console.log("nameSrc ", nameSrc)
+    
             lightBoxMedia.innerHTML = `${src}`;
+            console.log('lightBoxMedia ', lightBoxMedia)
             lightBoxName.innerHTML = `${nameSrc}`;
+            console.log("Last index ", this.currentIndex)
         }))
-        this.previous(document.querySelector('.left-arrow-lightbox'), currentMedia, currentMediaName);
-        this.next(document.querySelector('.right-arrow-lightbox'), currentMedia, currentMediaName);
+
+        
+        this.previous(document.querySelector('a.left-arrow-lightbox'), currentMedia, currentMediaName);
+        this.next(document.querySelector('a.right-arrow-lightbox'), currentMedia, currentMediaName);
         this.close();
         this.keyboard(currentMedia, currentMediaName);
         return this
@@ -64,7 +78,7 @@ export default class LightBox {
     }
 
     close() {
-        document.querySelector('.close-lightbox-icon').addEventListener('click', () => {
+        document.querySelector('a.modal-galerie__cross').addEventListener('click', () => {
             let lightbox = document.getElementById('galerie');
 
             lightbox.style.display = 'none';
@@ -115,3 +129,5 @@ export default class LightBox {
         });
     }
 }
+
+export const lightBox = new LightBox();

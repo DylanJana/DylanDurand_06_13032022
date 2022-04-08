@@ -1,6 +1,8 @@
 /* Je récupére l'ID du photograph */
 export const id = window.location.search.split('id=')[1];
-export let favoritesMedias = []
+export let favoritesMedias = [];
+import MediaTemplate from '../templates/media-template.js';
+import {lightBox} from '../LightBox/lightbox.js';
 
 
 class App {
@@ -26,7 +28,7 @@ class App {
 
 class AppMedia {
     constructor() {
-        this.photographMedias = document.querySelector('.photograph-medias') 
+        this.photographMedias = document.querySelector('.photograph-medias')
         this.mediasApi = new MediaApi('/data/photographers.json')
         this.countLikes = document.querySelector('.photograph-medias__counter p#total-likes span.love-count')
     }
@@ -38,7 +40,6 @@ class AppMedia {
             .forEach(media => {
                 if(media.photographerId == id) {
                     sumLikes += media.likes;
-                    console.log("number like", media.likes)
                 }
             })
 
@@ -76,6 +77,8 @@ class AppMedia {
             if(media.photographerId == id) {
                 const Template = new MediaTemplate(media)
                 this.photographMedias.appendChild(Template.createTemplateMedia())
+                Template.createTemplateLightBox()
+                lightBox.init(media.image, media.title)
             }
         });
     }
