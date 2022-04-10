@@ -12,9 +12,8 @@ class LightBox {
         getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
             console.log("getMedias", getMedias)
             document.getElementById('galerie').style.display = 'block';
-            let lightBoxMedia = document.querySelectorAll('.modal-galerie__image #lightbox__media');
-            console.log("lightBoxMedia brut", lightBoxMedia)
-            let lightBoxName = document.querySelectorAll('.modal-galerie #lightbox__name');
+            let lightBoxMedia = document.querySelector('.modal-galerie__image #lightbox__media');
+            let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
             console.log("Name ", lightBoxName)
             console.log("media works ", mediaWorks)
             console.log("media index ", index);
