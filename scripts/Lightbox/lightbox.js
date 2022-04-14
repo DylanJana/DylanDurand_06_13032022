@@ -5,73 +5,96 @@ class LightBox {
     }
 
     // initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
-    init(currentMedia, currentMediaName) {
+    init(currentMedia) {
         let getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media .photographer-media__picture'));
-        console.log("currentMedia ",currentMedia)
-        console.log("currentMediaName", currentMediaName)
         getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
+            const Template = new MediaTemplate(mediaWorks)
+            Template.createTemplateLightBox()
+            console.log("currentMediaImage", currentMedia[index].image)
+            console.log("currentMediaName", currentMedia[index].title)
             console.log("getMedias", getMedias)
             document.getElementById('galerie').style.display = 'block';
-            let lightBoxMedia = document.querySelector('.modal-galerie__image #lightbox__media');
+            let lightBoxMedia = document.querySelector('.modal-galerie__image');
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
             console.log("Name ", lightBoxName)
             console.log("media works ", mediaWorks)
             console.log("media index ", index);
+            console.log("Current media index", currentMedia[index])
             this.currentIndex = index;
-            let src = currentMedia;
+            let src = `/assets/images/${currentMedia[index].image}`;
             console.log("src ", src)
-            let nameSrc = currentMediaName;
+            let nameSrc = currentMedia[index].title;
             console.log("nameSrc ", nameSrc)
-    
-            lightBoxMedia.innerHTML = `${src}`;
+            lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
+            let videoPlayer = currentMedia[index].hasOwnProperty('video');
+            let videoMedia = currentMedia[index].video;
+            if(videoPlayer == true && videoMedia !== undefined) {
+                lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${currentMedia[index].video}" type="video/mp4" alt="${nameSrc}"></video>`;
+            }
             console.log('lightBoxMedia ', lightBoxMedia)
             lightBoxName.innerHTML = `${nameSrc}`;
-            console.log("Last index ", this.currentIndex)
+            console.log("Last index ", index);
+            let previousArrow = document.querySelector('a.left-arrow-lightbox');
+            let nextArrow = document.querySelector('a.right-arrow-lightbox');
+            this.previous(previousArrow, currentMedia);
+            this.next(nextArrow, currentMedia);
+            this.close();
+            this.keyboard(currentMedia);
+            return this
         }))
-
-        
-        this.previous(document.querySelector('a.left-arrow-lightbox'), currentMedia, currentMediaName);
-        this.next(document.querySelector('a.right-arrow-lightbox'), currentMedia, currentMediaName);
-        this.close();
-        this.keyboard(currentMedia, currentMediaName);
-        return this
     }
 
     // return to previous media
-    previous(elt, media, name) {
-        elt.addEventListener('click', () => {
+    previous(elt, media) {
+        elt.addEventListener("click", () => {
             this.currentIndex -= 1;
-            let lightBoxMedia = document.getElementById('lightbox__media');
-            let lightBoxName = document.getElementById('lightbox__name');
+            let lightBoxMedia = document.querySelector('.modal-galerie__image');
+            let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
 
             if (this.currentIndex < 0) {
                 this.currentIndex = media.length - 1;
-                this.currentIndex = name.length - 1;
             }
 
-            let src = media[this.currentIndex];
-            let nameSrc = name[this.currentIndex];
+            let index = this.currentIndex
 
-            lightBoxMedia.innerHTML = `${src}`;
+            console.log("media ", media[index].image)
+            console.log("name ", media[index].title)
+
+            let src = `/assets/images/${media[index].image}`;
+            let nameSrc = media[index].title;
+    
+            lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
+            let videoPlayer = media[index].hasOwnProperty('video');
+            let videoMedia = media[index].video;
+            if(videoPlayer == true && videoMedia !== undefined) {
+                lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${media[index].video}" type="video/mp4" alt="${nameSrc}"></video>`;
+            }
             lightBoxName.innerHTML = `${nameSrc}`;
         })
     }
 
     // turn to the next media
-    next(elt, media, name) {
+    next(elt, media) {
         elt.addEventListener('click', () => {
             this.currentIndex += 1;
-            let lightBoxMedia = document.getElementById('lightbox__media');
-            let lightBoxName = document.getElementById('lightbox__name');
+            let lightBoxMedia = document.querySelector('.modal-galerie__image');
+            let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
 
-            if (this.currentIndex > name.length - 1) {
+            if (this.currentIndex > media.length - 1) {
                 this.currentIndex = 0;
             }
 
-            let src = media[this.currentIndex];
-            let nameSrc = name[this.currentIndex];
+            let index = this.currentIndex;
 
-            lightBoxMedia.innerHTML = `${src}`;
+            let src = `/assets/images/${media[index].image}`;
+            let nameSrc = media[index].title;
+    
+            lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
+            let videoPlayer = media[index].hasOwnProperty('video');
+            let videoMedia = media[index].video;
+            if(videoPlayer == true && videoMedia !== undefined) {
+                lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${media[index].video}" type="video/mp4" alt="${nameSrc}"></video>`;
+            }
             lightBoxName.innerHTML = `${nameSrc}`;
         })
     }
@@ -84,10 +107,10 @@ class LightBox {
         })
     }
 
-    keyboard(currentMedia, currentMediaName) {
+    keyboard(media) {
         document.addEventListener('keydown', (key) => {
-            let lightBoxMedia = document.getElementById('lightbox__media');
-            let lightBoxName = document.getElementById('lightbox__name');
+            let lightBoxMedia = document.querySelector('.modal-galerie__image');
+            let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
 
             // ESCAPE TO CLOSE
             if (key.code == "Escape") {
@@ -99,14 +122,21 @@ class LightBox {
             else if (key.code == "ArrowRight") {
                 this.currentIndex += 1;
 
-                if (this.currentIndex > currentMediaName.length - 1) {
+                if (this.currentIndex > media.length - 1) {
                     this.currentIndex = 0;
                 }
 
-                let src = currentMedia[this.currentIndex];
-                let nameSrc = currentMediaName[this.currentIndex];
+                let index = this.currentIndex;
 
-                lightBoxMedia.innerHTML = `${src}`;
+                let src = `/assets/images/${media[index].image}`;
+                let nameSrc = media[index].title;
+        
+                lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
+                let videoPlayer = media[index].hasOwnProperty('video');
+                let videoMedia = media[index].video;
+                if(videoPlayer == true && videoMedia !== undefined) {
+                    lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${media[index].video}" type="video/mp4" alt="${nameSrc}"></video>`;
+                }
                 lightBoxName.innerHTML = `${nameSrc}`;
             }
 
@@ -115,14 +145,21 @@ class LightBox {
                 this.currentIndex -= 1;
 
                 if (this.currentIndex < 0) {
-                    this.currentIndex = currentMedia.length - 1;
-                    this.currentIndex = currentMediaName.length - 1;
+                    this.currentIndex = media.length - 1;
+                    this.currentIndex = media.length - 1;
                 }
 
-                let src = currentMedia[this.currentIndex];
-                let nameSrc = currentMediaName[this.currentIndex];
+                let index = this.currentIndex;
 
-                lightBoxMedia.innerHTML = `${src}`;
+                let src = `/assets/images/${media[index].image}`;
+                let nameSrc = media[index].title;
+        
+                lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
+                let videoPlayer = media[index].hasOwnProperty('video');
+                let videoMedia = media[index].video;
+                if(videoPlayer == true && videoMedia !== undefined) {
+                    lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${media[index].video}" type="video/mp4" alt="${nameSrc}"></video>`;
+                }
                 lightBoxName.innerHTML = `${nameSrc}`;
             }
         });

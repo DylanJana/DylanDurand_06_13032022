@@ -71,16 +71,17 @@ class AppMedia {
             this.countLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>'
     }
     async displayMedias(medias) {
+        let currentMediasArray = [];
         medias
         .map(media => new Media(media) )
         .forEach(media => {
             if(media.photographerId == id) {
                 const Template = new MediaTemplate(media)
                 this.photographMedias.appendChild(Template.createTemplateMedia())
-                Template.createTemplateLightBox()
-                lightBox.init(media.image, media.title)
+                currentMediasArray.push(media)
             }
         });
+        lightBox.init(currentMediasArray)
     }
 }
 

@@ -316,9 +316,21 @@ select#tri option:first-child {
     color: #901C1C;
 }
 
-#galerie .arrows__container a {
+.modal-galerie__cross i:hover {
+    color: #D3573C;
+}
+
+#galerie .arrows__container i {
     font-size: 42px;
     color: #901C1C;
+}
+
+#galerie .arrows__container a.left-arrow-lightbox:hover i {
+    color :#D3573C;
+}
+
+#galerie .arrows__container a.right-arrow-lightbox:hover i {
+    color :#D3573C;
 }
 
 #galerie .arrows__container {

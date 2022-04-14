@@ -31,12 +31,13 @@ export default class MediaTemplate {
             mediaPhotograph =
         `
         <!-- Je crée mon template pour un media-->
-        <div>
-            <a href="#" role="link">
+        <div class="photographer__media">
+            <a href="javascript:void(0);" role="link">
             <video 
             width="450px"
             height="450px"
-            poster="${this.media.poster}">
+            poster="${this.media.poster}"
+            class="photographer-media__picture">
                 <source src="/assets/images/${this.media.video}"
                         type="video/mp4"">
             </video>
@@ -76,7 +77,6 @@ export default class MediaTemplate {
                 </a>
             </div>
             <div class="modal-galerie__image">
-            <img src="/assets/images/${this.media.image}" alt="${this.media.title}" id="lightbox__media">
             </div>
             <p id="lightbox__name">${this.media.title}</p>
       </div>
