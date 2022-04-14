@@ -10,30 +10,19 @@ class LightBox {
         getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
             const Template = new MediaTemplate(mediaWorks)
             Template.createTemplateLightBox()
-            console.log("currentMediaImage", currentMedia[index].image)
-            console.log("currentMediaName", currentMedia[index].title)
-            console.log("getMedias", getMedias)
             document.getElementById('galerie').style.display = 'block';
             let lightBoxMedia = document.querySelector('.modal-galerie__image');
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
-            console.log("Name ", lightBoxName)
-            console.log("media works ", mediaWorks)
-            console.log("media index ", index);
-            console.log("Current media index", currentMedia[index])
             this.currentIndex = index;
             let src = `/assets/images/${currentMedia[index].image}`;
-            console.log("src ", src)
             let nameSrc = currentMedia[index].title;
-            console.log("nameSrc ", nameSrc)
             lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
             let videoPlayer = currentMedia[index].hasOwnProperty('video');
             let videoMedia = currentMedia[index].video;
             if(videoPlayer == true && videoMedia !== undefined) {
                 lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${currentMedia[index].video}" type="video/mp4" alt="${nameSrc}"></video>`;
             }
-            console.log('lightBoxMedia ', lightBoxMedia)
             lightBoxName.innerHTML = `${nameSrc}`;
-            console.log("Last index ", index);
             let previousArrow = document.querySelector('a.left-arrow-lightbox');
             let nextArrow = document.querySelector('a.right-arrow-lightbox');
             this.previous(previousArrow, currentMedia);
@@ -56,9 +45,6 @@ class LightBox {
             }
 
             let index = this.currentIndex
-
-            console.log("media ", media[index].image)
-            console.log("name ", media[index].title)
 
             let src = `/assets/images/${media[index].image}`;
             let nameSrc = media[index].title;
@@ -145,7 +131,6 @@ class LightBox {
                 this.currentIndex -= 1;
 
                 if (this.currentIndex < 0) {
-                    this.currentIndex = media.length - 1;
                     this.currentIndex = media.length - 1;
                 }
 
