@@ -97,6 +97,7 @@ class LightBox {
         document.addEventListener('keydown', (key) => {
             let lightBoxMedia = document.querySelector('.modal-galerie__image');
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
+            console.log("Key ", key)
 
             // ESCAPE TO CLOSE
             if (key.code == "Escape") {
@@ -113,6 +114,8 @@ class LightBox {
                 }
 
                 let index = this.currentIndex;
+                console.log("Index right ", index)
+                console.log("Appuie droite ", index)
 
                 let src = `/assets/images/${media[index].image}`;
                 let nameSrc = media[index].title;
@@ -135,6 +138,7 @@ class LightBox {
                 }
 
                 let index = this.currentIndex;
+                console.log("Appuie gauche ", index)
 
                 let src = `/assets/images/${media[index].image}`;
                 let nameSrc = media[index].title;
