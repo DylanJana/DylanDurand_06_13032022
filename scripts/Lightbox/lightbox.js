@@ -1,3 +1,4 @@
+import { appMedia } from "../pages/photographer.js";
 import MediaTemplate from "../templates/media-template.js";
 class LightBox {
     constructor() {
@@ -27,8 +28,8 @@ class LightBox {
             let nextArrow = document.querySelector('a.right-arrow-lightbox');
             this.previous(previousArrow, currentMedia);
             this.next(nextArrow, currentMedia);
-            this.close();
             this.keyboard(currentMedia);
+            this.close();
             return this
         }))
     }

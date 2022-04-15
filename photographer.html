@@ -40,13 +40,15 @@
       </section>
     </main>
     <!-- Formulaire de contact modal Photographe-->
-    <section id="contact_modal" alt="">
-			<div class="modal" role="dialog" aria-labelledby="contact">
+    <section id="contact_modal" alt="" onkeydown="closeModalKeyboard()">
+			<div class="modal" role="dialog" aria-labelledby="contact" tabindex="-1">
 				<header role="header">
           <div>
             <h2 id="contact" role="heading">Contactez-moi<span id="photograph-name"></span></h2>
           </div>
-          <img src="assets/icons/close.svg" onclick="closeModal()" alt="Close Contact Form" class="close" />
+          <a href="javascript:void(0);" role="link" onclick="closeModal()">
+            <img src="assets/icons/close.svg" alt="Close Contact Form" class="close" />
+          </a>
         </header>
 				<form name="contact" id="contact-form" action="" method="POST" onsubmit="validate();">
           <div>

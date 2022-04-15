@@ -171,6 +171,10 @@ form div textarea {
     cursor: pointer;
 }
 
+.contact_button:focus {
+    background-color: #D3573C;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
@@ -276,10 +280,23 @@ label[for="tri"] {
     color: white;
 }
 
+#tri:focus {
+    background-color: #D3573C;
+}
+
 select#tri option:first-child {
     color: rgba(255, 255, 255, 0.5);
 }
 
+/*** Galerie ***/
+.photographer__media a:focus img,
+.photographer__media a:focus video {
+    border: 3px solid #D3573C;
+}
+
+.love-btn:focus i {
+    color: #D3573C;
+}
 /*** LightBox ***/
 #galerie {
     background-color: rgba(255, 255, 255, 0.90);

@@ -15,7 +15,7 @@ class TriMedia {
 
     async triMediaByPopular() {
         const medias = await this.mediasApi.getMedia()
-        let mediaArray = []
+        let mediaArray = [];
             medias
                 .map(media => new Media(media))
                 .forEach(media => {

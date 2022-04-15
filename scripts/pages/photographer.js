@@ -88,4 +88,4 @@ class AppMedia {
 let app = new App()
 app.photograph()
 
-export const appMedia = new AppMedia()
+export let appMedia = new AppMedia()

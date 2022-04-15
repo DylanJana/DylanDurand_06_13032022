@@ -1,11 +1,27 @@
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
+  const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
+  const focusModal = document.querySelector(".modal").focus();
+  let main = document.getElementById('main');
+  main.setAttribute('style', 'pointer-events: none');
 }
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+    let main = document.getElementById('main');
+    main.removeAttribute('style');
+}
+
+function closeModalKeyboard() {
+  const modal = document.getElementById("contact_modal");
+  document.addEventListener('keydown', (key) => {
+      // ESCAPE TO CLOSE
+      if (key.code == "Escape") {
+        modal.style.display = "none";
+        main.removeAttribute('style');
+      }
+    });
 }
 
 let form = document.contact
@@ -100,14 +116,15 @@ let validate = function (){
     // SI toutes les étapes du formulaire sont égales à TRUE alors j'affiche le message de remerciement SINON je relance la fonction validate
     let confirmMessage = function () {
       if (firstNameVerify && lastNameVerify && emailVerify && textAreaVerify) {
-        let modalBodyContent = document.querySelector('form')
+        let modalBodyContent = document.querySelector('#contact-form')
         let titleChange = document.querySelector('header div h2' )
-        modalBodyContent.innerHTML = '<div class ="confirm-message"><p class="text--center title--xl">Le résultat du formulaire se trouve dans la console</p></div>'
+        modalBodyContent.innerHTML = '<div class ="confirm-message"><p class="text--center title--xl mx--auto">Le résultat du formulaire se trouve dans la console</p></div>'
         titleChange.classList.add('text--center')
         titleChange.textContent ='Notre photographe vous remercie'
         e.preventDefault()
         let crossReload = document.querySelector('.close')
         crossReload.setAttribute("onClick", "window.location.reload()")
+        document.querySelector('.modal').focus();
       }
     }
     console
