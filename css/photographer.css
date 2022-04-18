@@ -290,6 +290,9 @@ select#tri option:first-child {
 }
 
 /*** Galerie ***/
+.photographer__media a {
+    display: block;
+}
 .photographer__media a:focus img,
 .photographer__media a:focus video {
     border: 3px solid #D3573C;

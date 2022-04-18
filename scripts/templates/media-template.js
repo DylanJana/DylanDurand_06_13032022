@@ -60,9 +60,9 @@ export default class MediaTemplate {
     }
 
     createTemplateLightBox() {
-        const containerLightBox = document.querySelector('#galerie')
+        const containerLightBox = document.querySelector('#galerie');
         let templateLightBox = `
-        <div class="modal-galerie" role="dialog" aria-label="image closeup view">
+        <div class="modal-galerie" aria-label="image closeup view" role="dialog" tabindex="-1">
             <header role="header">
                 <a href="javascript:void(0);" class="modal-galerie__cross">
                 <i class="fas fa-times" aria-hidden="true" alt="Close dialog" role="button" onclick="close()" class="close-lightbox-icon"></i>
