@@ -111,6 +111,7 @@
 
 /*** Contact Form ***/
 textarea {
+    border: none;
     resize: none;
     width: 100%;
 }

@@ -9,23 +9,23 @@ export default class MediaTemplate {
         let mediaPhotograph =
         `
         <!-- Je crée mon template pour un media-->
-        <div class="photographer__media">
-            <a href="javascript:void(0);" role="link">
-                <img src="/assets/images/${this.media.image}"
-                alt="${this.media.title}" 
-                role="image-link"
-                class="photographer-media__picture" />
-            </a>
-        </div>
-        <section class="row-has--columns d-flex justify-content--space-between align-items--center mb-lg">
-            <div class="column">
-                <p class="title--md color-primary">${this.media.title}</p>
+            <div class="photographer__media">
+                <a href="javascript:void(0);" role="link">
+                    <img src="/assets/images/${this.media.image}"
+                    alt="${this.media.title}" 
+                    role="image-link"
+                    class="photographer-media__picture" />
+                </a>
             </div>
-            <div class="column d-flex align-items--center">
-                <p class="d--inline-block">${this.media.likes}</p>
-                <a href="javascript:void(0);" role="link" class="love-btn"><i class="fas fa-heart" aria-label="likes"></i></a>
+            <section class="row-has--columns d-flex justify-content--space-between align-items--center mb-lg">
+                <div class="column">
+                    <p class="title--md color-primary">${this.media.title}</p>
+                </div>
+                <div class="column d-flex align-items--center">
+                    <p class="d--inline-block">${this.media.likes}</p>
+                    <a href="javascript:void(0);" role="link" class="love-btn"><i class="fas fa-heart" aria-label="likes"></i></a>
+                </div>
             </div>
-        </div>
         `
         if (this.media.video !== undefined) {
             mediaPhotograph =

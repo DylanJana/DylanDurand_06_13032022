@@ -1,4 +1,38 @@
+function trapFocusForm() {
+  // J'ajoute tous les éléments qui peuvent avoir un focus dans la variable focusableElements
+  const  focusableElements =
+  'h2, a, input, textarea, button, [tabindex]:not([tabindex="-1"])';
+  const modal = document.querySelector('#contact_modal'); // Je selectionne mon formulaire par son ID
+
+  const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // Je récupère le premier element focusable
+  const focusableContent = modal.querySelectorAll(focusableElements);
+  const lastFocusableElement = focusableContent[focusableContent.length - 1]; // Je récupère le dernier element focusable
+
+  document.addEventListener('keydown', function(e) {
+  let isTabPressed = e.key === 'Tab' || e.code === 9;
+
+  if (!isTabPressed) {
+  return;
+  }
+
+  if (e.shiftKey) { // Si la touche shift est préssée lors d'une combination shift + tabulation
+  if (document.activeElement === firstFocusableElement) {
+  lastFocusableElement.focus(); // Je met le focus sur le dernier élément de ma liste des éléments focusables (focusablesElements)
+  e.preventDefault();
+  }
+  } else { // Sinon si la touche Tab est pressée
+  if (document.activeElement === lastFocusableElement) { //Si je me trouve sur le dernier élément focusable de la liste
+  firstFocusableElement.focus(); // Alors j'ajoute le focus sur le premier élément de la liste
+  e.preventDefault();
+  }
+  }
+  });
+
+  firstFocusableElement.focus(); // J'ajoute le focus sur le premier élément de la liste
+}
+
 function displayModal() {
+  trapFocusForm()
   const modal = document.getElementById("contact_modal");
 	modal.style.display = "block";
   const focusModal = document.querySelector(".modal").focus();
@@ -125,9 +159,9 @@ let validate = function (){
         let crossReload = document.querySelector('.close')
         crossReload.setAttribute("onClick", "window.location.reload()")
         document.querySelector('.modal').focus();
+        trapFocusForm()
       }
     }
-    console
     confirmMessage()
   })
 }
