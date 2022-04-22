@@ -1,5 +1,3 @@
-//const id = window.location.search.split('id=')[1];
-//console.log(id)
 class App {
     constructor() {
         this.photographContainer = document.querySelector('.photographer_section')

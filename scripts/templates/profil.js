@@ -4,7 +4,7 @@ class ProfilPhotographer {
     }
 
     createProfilPhotographer() {
-        const $article = document.createElement('article');
+        const article = document.createElement('article');
 
         const profilPhotographer = `
             <a href="photographer.html?id=${this.photographer.id}" role="link">
@@ -16,7 +16,7 @@ class ProfilPhotographer {
             <p class="margin--0 color-tiers title--xs">${this.photographer.price} €/jour</p>
         `
 
-        $article.innerHTML = profilPhotographer;
-        return $article
+        article.innerHTML = profilPhotographer;
+        return article
     }
 }

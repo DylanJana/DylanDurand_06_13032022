@@ -2,7 +2,6 @@ function trapFocusForm() {
     // J'ajoute tous les éléments qui peuvent avoir un focus dans la variable focusableElements
     const  focusableElements =
     'h2, a, input, textarea, button, [tabindex]:not([tabindex="-1"])';
-    console.log("Focusable elements ", focusableElements)
     const modal = document.querySelector('#contact_modal'); // Je selectionne mon formulaire par son ID
 
     const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // Je récupère le premier element focusable
