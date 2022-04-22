@@ -23,7 +23,7 @@ export default class MediaTemplate {
                 </div>
                 <div class="column d-flex align-items--center">
                     <p class="d--inline-block">${this.media.likes}</p>
-                    <a href="javascript:void(0);" role="link" class="love-btn"><i class="fas fa-heart" aria-label="likes"></i></a>
+                    <a href="javascript:void(0);" class="love-btn" role="link"><i class="fas fa-heart color-primary" aria-label="likes"></i></a>
                 </div>
             </div>
         `
@@ -62,22 +62,26 @@ export default class MediaTemplate {
     createTemplateLightBox() {
         const containerLightBox = document.querySelector('#galerie');
         let templateLightBox = `
-        <div class="modal-galerie" aria-label="image closeup view" role="dialog" tabindex="-1">
+        <div class="modal-galerie" aria-labelledby="image closeup view" role="dialog">
             <header role="header">
-                <a href="javascript:void(0);" class="modal-galerie__cross">
-                <i class="fas fa-times" aria-hidden="true" alt="Close dialog" role="button" onclick="close()" class="close-lightbox-icon"></i>
-                </a>
+                <button class="modal-galerie__cross" role="button">
+                <i class="fas fa-times" alt="Close dialog" role="button" onclick="close()" class="close-lightbox-icon"></i>
+                </button>
             </header>
-            <div class="arrows__container">
-                <a href="javascript:void(0);" class="left-arrow-lightbox">
-                    <i class="fas fa-angle-left" role="button" alt="Previous image"></i>
-                </a>
-                <a href="javascript:void(0);" class="right-arrow-lightbox">
-                    <i class="fas fa-angle-right" alt="Next image"></i>
-                </a>
-            </div>
-            <div class="modal-galerie__image">
-            </div>
+            <main>
+                <section class="arrows__container" role="navigation">
+                    <a href="javascript:void(0);" class="left-arrow-lightbox" alt="Previous image" role="link">
+                        <i class="fas fa-angle-left"></i>
+                    </a>
+                </section>
+                <section class="modal-galerie__image">
+                </section>
+                <section class="arrows__container" role="navigation">
+                    <a href="javascript:void(0);" class="right-arrow-lightbox" alt="Previous image" role="link">
+                        <i class="fas fa-angle-right"></i>
+                    </a>
+                </section>
+            </main>
             <p id="lightbox__name">${this.media.title}</p>
       </div>
         `

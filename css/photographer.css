@@ -76,7 +76,7 @@
     color: #901C1C;
 }
 
-.photograph-medias article section div a i {
+.photograph-medias article section div p a i {
     color: #000;
     font-weight: 700;
 }
@@ -298,7 +298,7 @@ select#tri option:first-child {
     border: 3px solid #D3573C;
 }
 
-.love-btn:focus i {
+.love-btn:focus {
     color: #D3573C;
 }
 /*** LightBox ***/
@@ -309,7 +309,6 @@ select#tri option:first-child {
     top: 50%;
     right: 20%;
     margin: auto;
-    z-index: 4;
     display: none;
 }
 
@@ -359,8 +358,18 @@ select#tri option:first-child {
     top: 50%;
     display: flex;
     width: 94.5%;
-    justify-content: space-between;
 }
+
+#galerie .arrows__container a.left-arrow-lightbox {
+    position: absolute;
+    left: 0;   
+}
+
+#galerie .arrows__container a.right-arrow-lightbox {
+    position: absolute;
+    right: 0;
+}
+
 .modal-galerie {
     text-align: center;
 }

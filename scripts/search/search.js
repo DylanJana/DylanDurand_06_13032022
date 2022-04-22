@@ -1,7 +1,7 @@
 import {appMedia} from '../pages/photographer.js';
 import {favoritesMedias} from '../pages/photographer.js';
 import {id} from '../pages/photographer.js';
-
+import{lightBox} from '../Lightbox/lightbox.js'
 class TriMedia {
     constructor() {
         this.mediasApi = new MediaApi('/data/photographers.json');

@@ -2,8 +2,8 @@ import { appMedia } from "../pages/photographer.js";
 import MediaTemplate from "../templates/media-template.js";
 function trapFocusFormLightBox() {
     // J'ajoute tous les éléments qui peuvent avoir un focus dans la variable focusableElements
-    const  focusableElements = 'section, div, header, i, img, a, p#lightbox__name, [tabindex]:not([tabindex="-1"])';
     const modal = document.querySelector('#galerie'); // Je selectionne mon formulaire par son ID
+    const  focusableElements = 'button, header, section, video, img, a';
     const firstFocusableElement = modal.querySelectorAll(focusableElements)[0]; // Je récupère le premier element focusable
     const focusableContent = modal.querySelectorAll(focusableElements);
     const lastFocusableElement = focusableContent[focusableContent.length - 1]; // Je récupère le dernier element focusable
@@ -27,8 +27,7 @@ function trapFocusFormLightBox() {
       }
     }
   });
-
-  firstFocusableElement.focus(); // J'ajoute le focus sur le premier élément de la liste
+  document.querySelector('#galerie button').focus();
 }
 
 class LightBox {
@@ -39,13 +38,14 @@ class LightBox {
     // initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
     init(currentMedia) {
         let getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media a'));
-        getMedias.forEach((mediaWorks) => mediaWorks.addEventListener("click", () => {
+        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
 
             this.currentIndex = 0;
+            this.currentIndex = index;
             const Template = new MediaTemplate(mediaWorks)
             Template.createTemplateLightBox()
             document.getElementById('galerie').style.display = 'block';
-            document.querySelector('#galerie').focus()
+            trapFocusFormLightBox();
             let lightBoxMedia = document.querySelector('.modal-galerie__image');
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
             let src = `/assets/images/${currentMedia[this.currentIndex].image}`;
@@ -66,7 +66,6 @@ class LightBox {
             this.next(nextArrow, currentMedia);
             
             this.close();
-            trapFocusFormLightBox();
             return this
         }))
         this.keyboard(currentMedia);
@@ -107,7 +106,7 @@ class LightBox {
                 this.currentIndex = 0;
             }
 
-            let index = this.currentIndex;
+            this.currentIndex;
 
             let src = `/assets/images/${media[this.currentIndex].image}`;
             let nameSrc = media[this.currentIndex].title;
@@ -123,7 +122,7 @@ class LightBox {
     }
 
     close() {
-        document.querySelector('a.modal-galerie__cross').addEventListener('click', () => {
+        document.querySelector('button.modal-galerie__cross').addEventListener('click', () => {
             let lightbox = document.getElementById('galerie');
             let main = document.getElementById('main');
             main.removeAttribute('style');
@@ -137,6 +136,7 @@ class LightBox {
             
             let lightBoxMedia = document.querySelector('.modal-galerie__image');
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
+            console.log("Key ", key)
 
             // ESCAPE TO CLOSE
             if (key.code == "Escape") {
@@ -147,6 +147,7 @@ class LightBox {
 
             // ARROW RIGHT TO STEP RIGHT
             else if (key.code == "ArrowRight") {
+                console.log("Current index clavier suivant ", this.currentIndex)
                 this.currentIndex += 1;
 
                 if (this.currentIndex > media.length - 1) {

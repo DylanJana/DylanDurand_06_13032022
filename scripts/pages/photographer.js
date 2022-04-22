@@ -66,6 +66,26 @@ class AppMedia {
                         newCountLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>';
                     }
                 })
+
+                loveBtn.addEventListener('keydown', function(key) {
+                    if(key.code == 'enter') {
+                        let likeThisMedia = articleMedia.querySelector('.d--inline-block');
+                    if(likeThisMedia.classList.contains('one')) {
+                        likeThisMedia.classList.remove('one')
+                        let likeThisMediaValue = parseInt(likeThisMedia.innerHTML) - 1;
+                        likeThisMedia.innerHTML = likeThisMediaValue;
+                        sumLikes--
+                        newCountLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>';
+                        } else {
+                            likeThisMedia.classList.add('one')
+                            likeThisMedia = articleMedia.querySelector('.d--inline-block.one');
+                            let likeThisMediaValue = parseInt(likeThisMedia.innerHTML) + 1;
+                            likeThisMedia.innerHTML = likeThisMediaValue;
+                            sumLikes++
+                            newCountLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>';
+                        }
+                    }
+                })
             }
 
             this.countLikes.innerHTML = sumLikes + ' <i class="fas fa-heart black" aria-label="likes"></i>'
