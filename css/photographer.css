@@ -49,6 +49,10 @@
     justify-content: space-between;
 }
 
+.flex--grow-1 {
+    flex-grow: 1;
+}
+
 .align-items--center {
     align-items: center;
 }
@@ -312,6 +316,15 @@ select#tri option:first-child {
     display: none;
 }
 
+#galerie button {
+    background-color: transparent;
+    border: 0;
+}
+
+#galerie button:focus {
+    border: 3px solid #D3573C;
+}
+
 .modal-galerie {
     padding: 32px;
     position: relative;
@@ -363,6 +376,10 @@ select#tri option:first-child {
 #galerie .arrows__container a.left-arrow-lightbox {
     position: absolute;
     left: 0;   
+}
+
+#galerie .arrows__container a:focus {
+    border: 3px solid #D3573C; 
 }
 
 #galerie .arrows__container a.right-arrow-lightbox {
