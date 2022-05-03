@@ -33,15 +33,18 @@ function trapFocusFormLightBox() {
 class LightBox {
     constructor() {
         this.currentIndex = 0;
+        this.bool = 0; 
     }
 
     // initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
     init(currentMedia) {
+        console.log("Current media ", currentMedia)
+        this.bool++;
+        console.log(this.bool)
         let getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media a'));
-        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
+        getMedias.forEach((mediaWorks) => mediaWorks.addEventListener("click", () => {
 
             this.currentIndex = 0;
-            this.currentIndex = index;
             const Template = new MediaTemplate(mediaWorks)
             Template.createTemplateLightBox()
             document.getElementById('galerie').style.display = 'block';
@@ -64,11 +67,12 @@ class LightBox {
             document.querySelector('#galerie .modal-galerie')
             this.previous(previousArrow, currentMedia);
             this.next(nextArrow, currentMedia);
-            
             this.close();
             return this
         }))
-        this.keyboard(currentMedia);
+        if(this.bool === 1) {
+            this.keyboard(currentMedia);
+        }
     }
 
     // return to previous media
@@ -132,8 +136,8 @@ class LightBox {
     }
 
     keyboard(media) {
+        console.log("media ", media)
         document.addEventListener('keydown', (key) => {
-            
             let lightBoxMedia = document.querySelector('.modal-galerie__image');
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
             console.log("Key ", key)
