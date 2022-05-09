@@ -42,9 +42,11 @@ class LightBox {
         this.bool++;
         console.log(this.bool)
         let getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media a'));
-        getMedias.forEach((mediaWorks) => mediaWorks.addEventListener("click", () => {
+        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
 
             this.currentIndex = 0;
+            this.currentIndex = index;
+            console.log("Mon index au clic", this.currentIndex)
             const Template = new MediaTemplate(mediaWorks)
             Template.createTemplateLightBox()
             document.getElementById('galerie').style.display = 'block';
@@ -70,9 +72,10 @@ class LightBox {
             this.close();
             return this
         }))
-        if(this.bool === 1) {
+        /*if(this.bool === 1) {
             this.keyboard(currentMedia);
-        }
+        }*/
+        this.keyboard(currentMedia);
     }
 
     // return to previous media

@@ -93,13 +93,13 @@ class AppMedia {
     async displayMedias(medias) {
         let currentMediasArray = [];
         medias
-        .map(media => new Media(media) )
-        .forEach(media => {
-            if(media.photographerId == id) {
-                const Template = new MediaTemplate(media)
-                this.photographMedias.appendChild(Template.createTemplateMedia())
-                currentMediasArray.push(media)
-            }
+            .map(media => new Media(media) )
+            .forEach(media => {
+                if(media.photographerId == id) {
+                    const Template = new MediaTemplate(media)
+                    this.photographMedias.appendChild(Template.createTemplateMedia())
+                    currentMediasArray.push(media)
+                }
         });
         lightBox.init(currentMediasArray)
     }

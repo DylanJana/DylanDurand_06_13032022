@@ -2,14 +2,13 @@ import {appMedia} from '../pages/photographer.js';
 import {favoritesMedias} from '../pages/photographer.js';
 import {id} from '../pages/photographer.js';
 import{lightBox} from '../Lightbox/lightbox.js';
-
 class TriMedia {
     constructor() {
         this.mediasApi = new MediaApi('/data/photographers.json');
-        this.init()
+        this.init();
     }
     async init() {
-        const medias = await this.mediasApi.getMedia()
+        const medias = await this.mediasApi.getMedia();
         appMedia.displayMedias(medias);
         appMedia.favoriteMedia(medias);
     }
@@ -22,26 +21,30 @@ class TriMedia {
                 .forEach(media => {
                     if(media.photographerId == id) {
                         mediaArray.push(media)
+                        console.log("Push media array", mediaArray)
                     }
                 });
                 const popularArray = mediaArray.sort((a,b) => (a.likes < b.likes) ? 1 : 0); 
                 appMedia.displayMedias(popularArray);
                 appMedia.favoriteMedia(popularArray);
+                //lightBox.init(popularArray);
     }
 
     async triMediaByTitle() {
         const medias = await this.mediasApi.getMedia()
-        let mediaArray = []
+        let mediaArray = [];
             medias
                 .map(media => new Media(media))
                 .forEach(media => {
                     if(media.photographerId == id) {
-                        mediaArray.push(media)
+                        mediaArray.push(media);
+                        console.log("Push media array", mediaArray)
                     }
                 });
-                const titlesArray = mediaArray.sort((a,b) => (a.title > b.title) ? 1 : 0)
+                const titlesArray = mediaArray.sort((a,b) => (a.title > b.title) ? 1 : 0);
                 appMedia.displayMedias(titlesArray);
                 appMedia.favoriteMedia(titlesArray);
+                //lightBox.init(titlesArray);
     }
 }
 let triAllMedias = new TriMedia();
@@ -51,6 +54,7 @@ document.getElementById('tri').onchange = function() {valueSelect(selectValue)};
 function valueSelect() {
     const selectId = document.getElementById('tri');
     let index = selectId.selectedIndex;
+    console.log("L'index de mon select", index)
     let mediasPhotographer = document.querySelector('.photograph-medias');
     if (index === 1) {
         mediasPhotographer.innerHTML = '';
@@ -63,4 +67,3 @@ function valueSelect() {
         triAllMedias.init();
     }
 }
-
