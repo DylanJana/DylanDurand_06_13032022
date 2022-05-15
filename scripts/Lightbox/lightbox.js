@@ -30,21 +30,166 @@ function trapFocusFormLightBox() {
   document.querySelector('#galerie button').focus();
 }
 
+/*class lightBox {
+    /*static init() {
+        const pictures = Array.from(document.querySelectorAll('.photographer-media__picture')); // Je récupère toutes les images du photographe
+        const galleryPictures = pictures.map(picture => picture.getAttribute("src"));
+        pictures.forEach(picture => picture.addEventListener('click', e => {
+            e.preventDefault();
+            new lightBox(e.currentTarget.getAttribute("src"), galleryPictures);
+            console.log("Picture ", picture)
+        }));
+        pictures.forEach(picture => picture.addEventListener("keypress", e => {
+            if(e.key === "Enter") {
+                e.preventDefault();
+                new lightBox(e.currentTarget.getAttribute("src"), galleryPictures);
+            }
+        }));
+    }
+
+    constructor(src, galleryPictures) {
+        this.count = 0;
+        this.displayLightbox = this.lightBox(src);
+        //this.addMediaInLightbox(src);
+        //this.onKeyUp = this.onKeyUp.bind(this); 
+        this.src = src;
+        this.name = name;
+        this.galleryPictures = galleryPictures;
+        document.addEventListener("keyup", this.onKeyUp);
+    }
+
+    lightBox(src) {
+        const Template = new MediaTemplate()
+        Template.createTemplateLightBox(src)
+        document.getElementById('galerie').style.display = 'block';
+        trapFocusFormLightBox();
+    }
+}
+
+let testLightbox = new lightBox();
+testLightbox.init();*/
 class LightBox {
+    constructor() {
+        this.currentIndex = 0;
+    }
+
+    //initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
+    init(currentMedia) {
+        let getMedias = Array.from(document.querySelectorAll('.photographer-media__picture'));
+        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", (e) => {
+            e.preventDefault();
+            this.currentIndex = index;
+            let src = e.currentTarget.getAttribute("src");
+            let name = e.currentTarget.getAttribute("alt");
+            const Template = new MediaTemplate(mediaWorks);
+            Template.createTemplateLightBox(src, name);
+            document.getElementById('galerie').style.display = 'block';
+            this.constructLightBox(currentMedia);
+            trapFocusFormLightBox();
+            })
+        )
+        getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media a'));
+        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("keypress", (e) => {
+                if(e.key === "Enter") {
+                    e.preventDefault();
+                    this.currentIndex = index;
+                    let imageActive = document.querySelector('.photographer-media__picture')
+                    let src = imageActive.getAttribute("src");
+                    let name = imageActive.getAttribute("alt");
+                    const Template = new MediaTemplate(mediaWorks)
+                    Template.createTemplateLightBox(src, name)
+                    document.getElementById('galerie').style.display = 'block';
+                    this.constructLightBox(currentMedia);
+                    this.onKeyUp(currentMedia);
+                    trapFocusFormLightBox();
+                }
+            })
+        )
+    }
+
+    constructLightBox(currentMedia) {
+        this.displayMedia(currentMedia);
+        const modalElement = document.getElementById('galerie');
+        modalElement.setAttribute("aria-hidden", "false");
+        modalElement.setAttribute("aria-modal", "true");
+        modalElement.querySelector(".modal-galerie__cross").addEventListener("click", this.closeLightBox.bind(this));
+        modalElement.querySelector('.right-arrow-lightbox').addEventListener("click", (e) => {
+            e.preventDefault();
+            this.nextMedia(currentMedia);
+        });
+        modalElement.querySelector('.left-arrow-lightbox').addEventListener("click", (e) => {
+            e.preventDefault();
+            this.previousMedia(currentMedia);
+        });
+    }
+
+    displayMedia(currentMedia) {
+        let src = `/assets/images/${currentMedia[this.currentIndex].image}`;
+        let name = currentMedia[this.currentIndex].title;
+        let Template = new MediaTemplate(currentMedia[this.currentIndex])
+        Template.createTemplateLightBox(src, name);
+        let videoPlayer = currentMedia[this.currentIndex].hasOwnProperty('video');
+        let videoMedia = currentMedia[this.currentIndex].video;
+        if(videoPlayer == true && videoMedia !== undefined) {
+            src = `/assets/images/${currentMedia[this.currentIndex].video}`;
+            let mediaSection = document.querySelector('.mediaSection');
+            mediaSection.innerHTML = `<video width="80%" height="450px" controls><source src="${src}" type="video/mp4" alt="${name}"></video>`
+        }
+    }
+
+
+
+    closeLightBox(e) {
+        e.preventDefault();
+        document.getElementById('galerie').style.display = 'none';
+    }
+
+    nextMedia(currentMedia) {
+        this.currentIndex += 1;
+        if (this.currentIndex > currentMedia.length - 1) {
+            this.currentIndex = 0;
+        };
+        this.constructLightBox(currentMedia)
+    }
+
+    previousMedia(currentMedia) {
+        this.currentIndex -= 1;
+        if (this.currentIndex < 0) {
+            this.currentIndex = currentMedia.length - 1;
+        };
+        this.constructLightBox(currentMedia)
+    }
+
+    onKeyUp() {
+        document.addEventListener("keydown", (e) => {
+            switch(e.key) {
+                case "Escape": this.closeLightBox(e);
+                break;
+                case "ArrowRight": this.nextMedia(currentMedia);
+                break;
+                case "ArrowLeft": this.previousMedia(currentMedia);
+                break;
+            }
+        })
+    }
+}
+
+export const lightBox = new LightBox();
+
+
+/*class LightBox {
     constructor() {
         this.currentIndex = 0;
         this.bool = 0; 
     }
 
-    // initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
+    //initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
     init(currentMedia) {
         console.log("Current media ", currentMedia)
         this.bool++;
         console.log(this.bool)
         let getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media a'));
         getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("click", () => {
-
-            this.currentIndex = 0;
             this.currentIndex = index;
             console.log("Mon index au clic", this.currentIndex)
             const Template = new MediaTemplate(mediaWorks)
@@ -72,13 +217,13 @@ class LightBox {
             this.close();
             return this
         }))
-        /*if(this.bool === 1) {
+        if(this.bool === 1) {
             this.keyboard(currentMedia);
-        }*/
+        }
         this.keyboard(currentMedia);
     }
 
-    // return to previous media
+    //return to previous media
     previous(elt, media) {
         elt.addEventListener("click", () => {
             this.currentIndex -= 1;
@@ -93,16 +238,16 @@ class LightBox {
             let nameSrc = media[this.currentIndex].title;
     
             lightBoxMedia.innerHTML = `<img src="${src}" alt="${nameSrc}">`;
+            lightBoxName.innerHTML = `${nameSrc}`;
             let videoPlayer = media[this.currentIndex].hasOwnProperty('video');
             let videoMedia = media[this.currentIndex].video;
             if(videoPlayer == true && videoMedia !== undefined) {
                 lightBoxMedia.innerHTML = `<video width="80%" height="450px" controls><source src="/assets/images/${media[this.currentIndex].video}" type="video/mp4" alt="${nameSrc}"></video>`;
             }
-            lightBoxName.innerHTML = `${nameSrc}`;
         })
     }
 
-    // turn to the next media
+    //turn to the next media
     next(elt, media) {
         elt.addEventListener('click', () => {
             this.currentIndex += 1;
@@ -145,14 +290,14 @@ class LightBox {
             let lightBoxName = document.querySelector('.modal-galerie #lightbox__name');
             console.log("Key ", key)
 
-            // ESCAPE TO CLOSE
+            //ESCAPE TO CLOSE
             if (key.code == "Escape") {
                 let lightBox = document.getElementById('galerie');
                 lightBox.style.display = 'none';
                 main.removeAttribute('style');
             }
 
-            // ARROW RIGHT TO STEP RIGHT
+            //ARROW RIGHT TO STEP RIGHT
             else if (key.code == "ArrowRight") {
                 console.log("Current index clavier suivant ", this.currentIndex)
                 this.currentIndex += 1;
@@ -174,7 +319,7 @@ class LightBox {
                 
             }
 
-            // ARROW LEFT TO STEP LEFT
+            //ARROW LEFT TO STEP LEFT
             else if (key.code == "ArrowLeft") {
                 this.currentIndex -= 1;
 
@@ -195,6 +340,4 @@ class LightBox {
             }
         });
     }
-}
-
-export const lightBox = new LightBox();
+}*/

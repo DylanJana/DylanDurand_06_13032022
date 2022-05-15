@@ -1,7 +1,7 @@
 import {appMedia} from '../pages/photographer.js';
 import {favoritesMedias} from '../pages/photographer.js';
 import {id} from '../pages/photographer.js';
-import{lightBox} from '../Lightbox/lightbox.js';
+//import{lightBox} from '../Lightbox/lightbox.js';
 class TriMedia {
     constructor() {
         this.mediasApi = new MediaApi('/data/photographers.json');
@@ -27,7 +27,6 @@ class TriMedia {
                 const popularArray = mediaArray.sort((a,b) => (a.likes < b.likes) ? 1 : 0); 
                 appMedia.displayMedias(popularArray);
                 appMedia.favoriteMedia(popularArray);
-                //lightBox.init(popularArray);
     }
 
     async triMediaByTitle() {

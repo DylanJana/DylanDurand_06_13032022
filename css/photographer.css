@@ -335,6 +335,10 @@ select#tri option:first-child {
     justify-content: end;
 }
 
+.modal-galerie__cross:hover {
+    cursor: pointer;
+}
+
 .modal-galerie__cross a {
     position: absolute;
     right: 0;
@@ -351,6 +355,10 @@ select#tri option:first-child {
 
 .modal-galerie__cross i:hover {
     color: #D3573C;
+}
+
+.modal-galerie img {
+    width: 80%;
 }
 
 #galerie .arrows__container i {

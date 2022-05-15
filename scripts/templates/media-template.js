@@ -59,7 +59,7 @@ export default class MediaTemplate {
         return mediaContainer
     }
 
-    createTemplateLightBox() {
+    createTemplateLightBox(src, name) {
         const containerLightBox = document.querySelector('#galerie');
         let templateLightBox = `
         <div class="modal-galerie" aria-labelledby="image closeup view" role="dialog">
@@ -81,8 +81,11 @@ export default class MediaTemplate {
                         <i class="fas fa-angle-right"></i>
                     </a>
                 </section>
+                <div class="mediaSection">
+                    <img src="${src}" alt="${name}">
+                </div>
             </main>
-            <p id="lightbox__name">${this.media.title}</p>
+            <p id="lightbox__name">${name}</p>
       </div>
         `
 
