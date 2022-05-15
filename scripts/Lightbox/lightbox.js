@@ -160,7 +160,7 @@ class LightBox {
         this.constructLightBox(currentMedia)
     }
 
-    onKeyUp() {
+    onKeyUp(currentMedia) {
         document.addEventListener("keydown", (e) => {
             switch(e.key) {
                 case "Escape": this.closeLightBox(e);
