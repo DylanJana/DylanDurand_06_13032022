@@ -71,6 +71,8 @@ testLightbox.init();*/
 class LightBox {
     constructor() {
         this.currentIndex = 0;
+        this.onKeyUp = this.onKeyUp.bind(this);
+        document.addEventListener("keyup", this.onKeyUp);
     }
 
     //initialize the lightbox when clicking on a media, call the functions allowing to navigate in the lightbox
@@ -89,18 +91,16 @@ class LightBox {
             })
         )
         getMedias = Array.from(document.querySelectorAll('.photograph-medias article .photographer__media a'));
-        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("keypress", (e) => {
+        getMedias.forEach((mediaWorks, index) => mediaWorks.addEventListener("keydown", (e) => {
                 if(e.key === "Enter") {
                     e.preventDefault();
                     this.currentIndex = index;
-                    let imageActive = document.querySelector('.photographer-media__picture')
-                    let src = imageActive.getAttribute("src");
-                    let name = imageActive.getAttribute("alt");
+                    let src = e.currentTarget.getAttribute("src");
+                    let name = e.currentTarget.getAttribute("alt");
                     const Template = new MediaTemplate(mediaWorks)
                     Template.createTemplateLightBox(src, name)
                     document.getElementById('galerie').style.display = 'block';
                     this.constructLightBox(currentMedia);
-                    this.onKeyUp(currentMedia);
                     trapFocusFormLightBox();
                 }
             })
@@ -137,13 +137,6 @@ class LightBox {
         }
     }
 
-
-
-    closeLightBox(e) {
-        e.preventDefault();
-        document.getElementById('galerie').style.display = 'none';
-    }
-
     nextMedia(currentMedia) {
         this.currentIndex += 1;
         if (this.currentIndex > currentMedia.length - 1) {
@@ -160,17 +153,20 @@ class LightBox {
         this.constructLightBox(currentMedia)
     }
 
-    onKeyUp(currentMedia) {
-        document.addEventListener("keydown", (e) => {
-            switch(e.key) {
-                case "Escape": this.closeLightBox(e);
-                break;
-                case "ArrowRight": this.nextMedia(currentMedia);
-                break;
-                case "ArrowLeft": this.previousMedia(currentMedia);
-                break;
-            }
-        })
+    closeLightBox(e) {
+        e.preventDefault();
+        document.getElementById('galerie').style.display = 'none';
+        console.log("close")
+    }
+
+    onKeyUp(e) {
+        switch(e.key){
+            case "Escape" : this.closeLightBox(e);
+            break;
+            /*case "ArrowRight" : this.nextMedia(currentMedia);
+            break;
+            case "ArrowLeft": this.prevMedia();*/
+        }
     }
 }
 
