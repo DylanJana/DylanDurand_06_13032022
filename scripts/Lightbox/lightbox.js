@@ -163,9 +163,9 @@ class LightBox {
         switch(e.key){
             case "Escape" : this.closeLightBox(e);
             break;
-            /*case "ArrowRight" : this.nextMedia(currentMedia);
+            case "ArrowRight" : this.nextMedia(currentMedia);
             break;
-            case "ArrowLeft": this.prevMedia();*/
+            case "ArrowLeft": this.prevMedia();
         }
     }
 }
