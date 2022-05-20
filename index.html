@@ -1,32 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-    <meta charset="utf-8">
-    <link rel="icon" type="image/png" href="assets/favicon.png">
-    <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
-    <title>Fisheye</title>
-  </head>
-  <body>
-    <header>
-      <a href="index.html" role="link">
-        <img src="assets/images/logo.png" class="logo" role="image-link" alt="Logo Fisheye"/>
-      </a>
-        <h1 class="color-primary" role="heading">Nos photographes</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1">
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>FishEye - Accueil</title>
+</head>
+<body>
+    <a href="#main" class="anchor">Passer au contenu</a>
+    <div class="body-wrapper">
+    <header class="header" role="banner">
+        <a href="./index.html" aria-label="Page d'Accueil FishEye">
+            <img src="./assets/images/logo.svg" alt="Page d'Accueil FishEye" class="header__logo">
+        </a>
     </header>
-    <main id="main">
-        <div class="photographer_section">
-        </div>
+    <main class="content" id="main">
+        <h1 class="main-title">Nos photographes</h1>
+        <div class="wrapper"></div>
     </main>
+</div>
     <!--Constructor Pattern-->
-    <script src="/scripts/models/photograph.js"></script>
-    <!-- Template regroupant les informations du profil du photographe "Page Accueil"-->
-    <script src="/scripts/templates/profil.js"></script>
-    <!-- Mise en place d'une API pour gérer les requêtes HTTP et récupérer les données de mon JSON-->
-    <script src="/scripts/api/Api.js"></script>
-    <!-- Page Accueil-->
-    <script src="scripts/pages/index.js"></script>
-    <!-- Page Photographe-->
-    <script src="scripts/pages/photographer.js"></script>
+    <script src="./scripts/pages/app.js" type="module"></script>
   </body>
 </html>
