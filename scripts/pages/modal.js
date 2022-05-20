@@ -55,6 +55,12 @@ submitBtn.addEventListener("click", e =>{
     if (entry.match(regex) && entry.length >= 2) {
       return true;
     } else {
+      let allInputs = document.querySelectorAll('input');
+      allInputs.forEach((input) => {
+        input.classList.add("input-error");
+      });
+      let errorMessage = document.querySelector('.error-message');
+      errorMessage.style.display= "block";
       return false;
     }
   }
