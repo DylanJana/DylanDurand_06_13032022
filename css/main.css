@@ -491,7 +491,7 @@
     border: none;
     position: fixed;
     top: 50%;
-    right: 1%;
+    right: 2%;
     margin-top: -14px;
     text-indent: 10000px;
     cursor: pointer;
@@ -499,7 +499,7 @@
 
   .lightbox__prev {
     right: auto;
-    left: 1%;
+    left: 2%;
     transform: rotate(180deg);
   }
   .lightbox__close {
@@ -511,7 +511,7 @@
     cursor: pointer;
     position: fixed;
     top: 10%;
-    right: 1%;
+    right: 2%;
   }
 
   .lightbox__container {
