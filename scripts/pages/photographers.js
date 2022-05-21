@@ -37,8 +37,7 @@ fetchPhotographersJSON()
                 medias.push(media);
             }
         }
-        /*let data_json = JSON.stringify(data);
-        download(data_json, "test.json", "json");*/
+
     }) .finally( () =>{
         namePhotographer.innerHTML = photographer.name;
         localisationPhotographer.innerHTML = photographer.city + ", " + photographer.country;
@@ -59,7 +58,6 @@ fetchPhotographersJSON()
 export const addMediasInDOM = (media) =>{
     const mediaCard = document.createElement("div");
     mediaCard.classList.add("media__card");
-    //mediaCard.setAttribute("tabIndex", "0");
     wrapperMedias.appendChild(mediaCard);
     mediaCard.innerHTML =  `${media.mediaHTML}
                             <div class="media__text"><span class="media__title">${media.title}</span>
