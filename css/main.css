@@ -516,12 +516,17 @@
 
   .lightbox__container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
     min-height: 100vh;
     width: 90%;
+  }
+
+  .lightbox__container div h2 {
+    margin-top: 32px;
   }
 
   .lightbox__photo {
