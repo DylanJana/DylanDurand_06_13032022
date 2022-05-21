@@ -47,6 +47,6 @@ class VideoFactory extends Media {
         if(folderName[0].includes("-")){
             folderName[0] = folderName[0].replace("-", " ");
         }
-        this.mediaHTML = ` <video controls width="350" heigth="400" class="media__photo" tabIndex="0" src="../assets/images/${folderName[0]}/${this.video}#t=0.1" type="video/mp4" >Sorry, your browser doesn't support embedded videos.</video>`
+        this.mediaHTML = ` <video width="350" heigth="400" class="media__photo" tabIndex="0" src="../assets/images/${folderName[0]}/${this.video}#t=0.1" poster="../assets/images/${folderName[0]}/${this.poster}" type="video/mp4" >Sorry, your browser doesn't support embedded videos.</video>`
     }
 }
