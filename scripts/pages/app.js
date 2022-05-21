@@ -1,5 +1,5 @@
-import { fetchPhotographersJSON } from "./getData.js";
-import { addAvatarToPhotographer } from "./avatar.js";
+import { fetchPhotographersJSON } from "./api/getData.js";
+import { addAvatarToPhotographer } from "./parts/avatar.js";
 
 const wrapperPhotographers = document.querySelector(".wrapper");
 const spanTags = document.getElementsByClassName("navigation__link");

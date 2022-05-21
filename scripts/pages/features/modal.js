@@ -1,4 +1,4 @@
-import { photographer } from "./photographers.js";
+import { photographer } from "../photographers.js";
 
 const closeModalBtn = document.querySelector(".modal__close");
 const modal = document.querySelector(".modal");

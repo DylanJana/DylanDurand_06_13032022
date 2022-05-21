@@ -1,6 +1,6 @@
-import { Lightbox } from "./lightbox.js";
-import { Likes } from "./likes.js";
-import { addMediasInDOM, flushMediasInDOM, medias } from "./photographers.js";
+import { Lightbox } from "../features/lightbox.js";
+import { Likes } from "../features/likes.js";
+import { addMediasInDOM, flushMediasInDOM, medias } from "../photographers.js";
 const dropDownBtn = document.getElementById("sort-by");
 const dropDownContent = document.querySelector(".sort__options");
 const dropDownOptions = document.querySelectorAll(".sort__option");

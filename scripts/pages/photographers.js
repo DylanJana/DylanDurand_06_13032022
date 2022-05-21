@@ -1,10 +1,10 @@
-import { addAvatarToPhotographer } from "./avatar.js";
-import { showDropdown } from "./dropDown.js";
-import { fetchPhotographersJSON } from "./getData.js";
-import { Lightbox } from "./lightbox.js";
-import { Likes } from "./likes.js";
-import { MediaFactory } from "./media.js";
-import { openModal } from "./modal.js";
+import { addAvatarToPhotographer } from "./parts/avatar.js";
+import { showDropdown } from "./filters/dropDown.js";
+import { fetchPhotographersJSON } from "./api/getData.js";
+import { Lightbox } from "./features/lightbox.js";
+import { Likes } from "./features/likes.js";
+import { MediaFactory } from "./parts/media.js";
+import { openModal } from "./features/modal.js";
 
 
 const urlParams = new URLSearchParams(window.location.search);
