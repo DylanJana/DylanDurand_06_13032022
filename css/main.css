@@ -135,7 +135,6 @@
   .anchor {
     display: none;
     position: fixed;
-    height: 30px;
     background: #DB8876;
     color: #000;
     font-family: DM Sans;
@@ -145,9 +144,9 @@
     line-height: 23px;
     text-align: center;
     border-radius: 5px;
-    padding: 3px 10px;
+    padding: 24px 24px;
     top: 1%;
-    left: calc(50% + -90px);
+    left: calc(46.5% + -90px);
   }
   
   .content {
@@ -346,6 +345,7 @@
   .modal__wrapper {
     background-color: #DB8876;
     padding: 35px;
+    max-width: 658px;
   }
 
   .modal__title, .modal__photographer {
@@ -744,10 +744,11 @@
     }
 
     .contact__button {
-      height: 35px;
+      height: 50px;
       position: fixed;
       bottom: 30px;
-      left: calc(50% - 85px);
+      width: 200px;
+      left: calc(46.25% - 85px);
     }
 
     .header {
@@ -816,7 +817,6 @@
       padding: 50px 56px;
       background-color: #FAFAFA;
       border-radius: 5px;
-      padding-left: 20px;
       margin-bottom: 32px;
     }
 
