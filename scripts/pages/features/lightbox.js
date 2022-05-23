@@ -108,8 +108,6 @@
     nextMedia(e) {
       e.preventDefault();
       let pos = this.gallery.findIndex(media => media === this.src);
-      console.log("pos ", pos);
-      console.log("this.title ", this.title[pos])
       if(pos >= this.gallery.length-1){
           pos = 0;
       } else{
